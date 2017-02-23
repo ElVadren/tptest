@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+	<title>header</title>
+</h:head>
+
+<h:body>
+	<!--  le header  -->
+<h1>Le header de la page !</h1>
+	
+	<br/>
+	<h:form>
+<p:breadCrumb>
+    <p:menuitem value="Accueil" url="index.xhtml" />
+    <p:menuitem value="Chercher un produit" url="afficherproduits2.xhtml" />
+    <p:menuitem value="Chercher produit par catégorie" url="afficherproduits.xhtml" />
+    <p:menuitem value="Afficher les catégories" url="affichercategories.xhtml" />
+    <p:menuitem value="Afficher votre panier" url="afficherpanier.xhtml" />
+</p:breadCrumb>
+	</h:form>
+<p:separator/>
+</h:body>
+
+</html>

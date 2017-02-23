@@ -91,7 +91,6 @@ public class ClientDaoImpl implements IClientDao {
 	 */
 	@Override
 	public Produit getProduitById(long id) {
-		System.out.println("je suis bien arrivé dans la methode de récup du produit");
 		String req = "select p from Produit p where p.idProduit=:idPseudo";
 		Query query = em.createQuery(req);
 		query.setParameter("idPseudo", id);

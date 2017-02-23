@@ -39,7 +39,7 @@ public class Produit implements Serializable {
 	@Column(name="prix_produit")
 	private double prix;
 	@Column(name="quantite_produit")
-	private int quantite=0;
+	private int quantite=1;
 	@Column(name="selectionne_produit")
 	private boolean selectionne=false;
 

@@ -26,7 +26,7 @@ public class ClientManagedBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Client client;
 	private List<Produit> listePanier;
-	private long id;
+	private Produit produit;
 	
 //instanciation des EJB pour les méthodes
 	@EJB
@@ -37,6 +37,8 @@ public class ClientManagedBean implements Serializable {
 	public ClientManagedBean() {
 		this.client = new Client();
 		this.listePanier = new ArrayList<Produit>();
+		this.produit = new Produit ();
+		
 	}
 
 //getter et setters :
@@ -56,30 +58,34 @@ public class ClientManagedBean implements Serializable {
 		this.listePanier = listePanier;
 	}
 	
-	public long getId() {
-		return id;
+	public Produit getProduit() {
+		return produit;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setProduit(Produit produit) {
+		this.produit = produit;
 	}
-
-
 	
 //les methodes --------------------------;
 	
 
 
+
+/**
+ * la methode pour ajouter le produit dans le panier : 
+ * 1 - récupération des informations complète du produit via son ID
+ * 2 - ajout de la quantitée voulue
+ * 3 - calcul du nouveau prix de l'ensemble 
+ * 4 - ajout du produit à la liste Panier (gardée sur l'ensemble de la session et enregistrée à la commande
+
+ */
 	public void ajoutPanier(){
-	System.out.println(id);
-	System.out.println("je suis bien dans la methode");
-	Produit p = clientService.getProduitByIdService(id);
-	System.out.println("Le produit correspondant :");
-	System.out.println(p);
-	this.listePanier.add(p);
-	for(Produit p1:listePanier){
-		System.out.println(p1);
-	}
+	System.out.println("la quantitée récupérée ?");
+	System.out.println(produit.getQuantite());
+	produit = clientService.getProduitByIdService(produit.getIdProduit());
+	double nouveauprix = produit.getPrix();
+	produit.setPrix(nouveauprix);
+	this.listePanier.add(produit);
 	}
 	
 	

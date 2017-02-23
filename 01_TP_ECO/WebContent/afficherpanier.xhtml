@@ -16,25 +16,32 @@
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
-	<h:form>
-		 <p:commandButton value="afficher la liste des catégories" icon="ui-icon-check" action="#{navigationManagedBean.listeCat}" update="@all"/>
-	</h:form>
+	<h3>Votre panier : </h3>
 		<br/>
 		<p:separator/>
-		<p:dataTable var="liste" value="#{navigationManagedBean.listeCategorie}" rendered="#{navigationManagedBean.rendu}">
-		
+		<p:dataTable var="liste" value="#{clientManagedBean.listePanier}">
+		  
     <p:column headerText="Id :">
-        <h:outputText value="#{liste.idCategorie}" />
+        <h:outputText value="#{liste.idProduit}" />
     </p:column>
- <p:column headerText="Nom :">
-        <h:outputText value="#{liste.nomCategorie}" />
+ <p:column headerText="Designation :">
+        <h:outputText value="#{liste.designation}" />
     </p:column>
  <p:column headerText="Description :">
         <h:outputText value="#{liste.description}" />
     </p:column>
-
+    <p:column headerText="Quantité(e)) :">
+        <h:outputText value="#{liste.quantite}" />
+    </p:column>
+ <p:column headerText="Prix unitaire :">
+        <h:outputText value="#{liste.prix}" />
+    </p:column>
+     <p:column headerText="Retirer du panier ?">
+        <h:outputText value="oui ?" />
+    </p:column>
+  
 </p:dataTable>
-
+<h:outputText value="Passer une commande wesh"/> 
 	
 	<!-- fin de la zone d'edition -->
 			

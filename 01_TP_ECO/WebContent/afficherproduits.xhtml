@@ -2,32 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	<title>la liste des catégories</title>
-</h:head>
-<h:body>
-	<div align="center">
-<h1>Afficher les produits selon ID categorie</h1>
 	
-	<br/>
-	<h:form>
-<p:breadCrumb>
-    <p:menuitem value="Accueil" url="index.xhtml" />
-    <p:menuitem value="Chercher un produit" url="afficherproduits2.xhtml" />
-    <p:menuitem value="Chercher produit par catégorie" url="afficherproduits.xhtml" />
-    <p:menuitem value="Afficher les catégories" url="affichercategories.xhtml" />
-</p:breadCrumb>
-	</h:form>
-<p:separator/>
+</h:head>
+
+
+<h:body>
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 	<h:form>
 		<p:inputText value="#{navigationManagedBean.categorie.idCategorie}" />
-		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="@all"/>
+		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="test"/>
 	</h:form>
 		<br/>
 		<p:separator/>
-		<p:dataTable var="liste" value="#{navigationManagedBean.listeProduit}" rendered="#{navigationManagedBean.rendu}">
+		<p:dataTable id="test" var="liste" value="#{navigationManagedBean.listeProduit}">
 		  
     <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
@@ -41,16 +36,29 @@
  <p:column headerText="Prix :">
         <h:outputText value="#{liste.prix}" />
     </p:column>
+ <p:column headerText="Prix :">
+      
+    </p:column>
   <p:column headerText="Achat"> 
   <h:form>
-		 <p:commandButton value="Ajout panier/pas touche for now" icon="ui-icon-check" action="#{clientManagedBean.ajoutPanier}">
+    <h:inputText value="#{clientManagedBean.produit.quantite}" />
+		 <p:commandButton value="Ajout panier" icon="ui-icon-check" action="#{clientManagedBean.ajoutPanier}" >
 		<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
-		<f:setPropertyActionListener value="#{liste.idProduit}" target="#{clientManagedBean.id}"></f:setPropertyActionListener>
+		<f:setPropertyActionListener value="#{liste.idProduit}" target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
 		 </p:commandButton>
 	</h:form>
   </p:column>
   
 </p:dataTable>
-	</div>
+
+	
+	<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
+
+
+	
 </h:body>
 </html>

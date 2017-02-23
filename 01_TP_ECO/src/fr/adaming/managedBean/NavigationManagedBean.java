@@ -134,6 +134,7 @@ public String getSaisie() {
 	public void listePro(){
 		this.listeProduit = clientService.getProduitsByCategorieService(categorie);
 		this.rendu = true;
+		
 	}
 	
 	/**la methode pour obtenir la liste des produits par mot clés :
