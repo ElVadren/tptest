@@ -85,6 +85,23 @@ public class ClientDaoImpl implements IClientDao {
 	}
 
 }
+	
+	/**
+	 * méthode pour obtenir un produit via son id
+	 */
+	@Override
+	public Produit getProduitById(long id) {
+		System.out.println("je suis bien arrivé dans la methode de récup du produit");
+		String req = "select p from Produit p where p.idProduit=:idPseudo";
+		Query query = em.createQuery(req);
+		query.setParameter("idPseudo", id);
+		Produit produit = (Produit) query.getSingleResult();
+		if (produit!=null){
+			return produit;
+		}else{
+		return null;
+		}
+	}
 
 
 //methodeeeeeee a supprimer après
@@ -133,4 +150,7 @@ public class ClientDaoImpl implements IClientDao {
 		em.persist(c3);
 		em.persist(c4);
 	}
+
+
+	
 }

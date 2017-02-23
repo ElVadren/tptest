@@ -28,7 +28,7 @@
 		<br/>
 		<p:separator/>
 		<p:dataTable var="liste" value="#{navigationManagedBean.listeProduit}" rendered="#{navigationManagedBean.rendu}">
-		
+		  
     <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
     </p:column>
@@ -41,6 +41,15 @@
  <p:column headerText="Prix :">
         <h:outputText value="#{liste.prix}" />
     </p:column>
+  <p:column headerText="Achat"> 
+  <h:form>
+		 <p:commandButton value="Ajout panier/pas touche for now" icon="ui-icon-check" action="#{clientManagedBean.ajoutPanier}">
+		<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+		<f:setPropertyActionListener value="#{liste.idProduit}" target="#{clientManagedBean.id}"></f:setPropertyActionListener>
+		 </p:commandButton>
+	</h:form>
+  </p:column>
+  
 </p:dataTable>
 	</div>
 </h:body>

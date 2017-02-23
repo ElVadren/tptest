@@ -32,8 +32,10 @@ public interface IClientDao {
 	 */
 	public List<Produit> getProduitsByMot(String saisie);
 	
-	
-	
+	/**
+	 * méthode pour récupérer l'intégralité d'un produit par son id :
+	 */
+	public Produit getProduitById (long id);
 	
 	//méthode à supprimer à la fin 
 	public void remplirbdd();

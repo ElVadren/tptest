@@ -44,6 +44,7 @@ public class NavigationManagedBean implements Serializable{
 	private Categorie categorie;
 	private String saisie;
 
+
 /**
  * Instation pour le lien avec le service :
  */
@@ -106,6 +107,7 @@ public String getSaisie() {
 		this.saisie = saisie;
 	}
 
+
 /**
  * Déclaration des méthodes :
  */
@@ -142,7 +144,7 @@ public String getSaisie() {
 		this.rendu=true;
 	}
 	
-	
+
 	
 //methode a supprimer à la fin :
 	public void remplir(){

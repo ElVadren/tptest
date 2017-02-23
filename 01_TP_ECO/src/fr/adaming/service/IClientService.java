@@ -14,7 +14,7 @@ public interface IClientService {
 	public List<Categorie> getAllCategorieService ();
 	public List<Produit> getProduitsByCategorieService (Categorie categorie); 
 	public List<Produit> getProduitsByMotService(String saisie);
-	
+	public Produit getProduitByIdService (long id);
 	
 	//méthode à supprimer à la fin 
 		public void remplirbddService();

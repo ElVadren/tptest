@@ -39,10 +39,21 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getProduitsByMot(saisie);
 	}
 
+
+	/**
+	 * la methode pour obtenir un produit par son ID
+	 */
+	@Override
+	public Produit getProduitByIdService(long id) {
+		return clientDao.getProduitById(id);
+	}
+	
+//methode à supprimer a la fin
 	@Override
 	public void remplirbddService() {
 		clientDao.remplirbdd();
 		
 	}
+
 
 }
