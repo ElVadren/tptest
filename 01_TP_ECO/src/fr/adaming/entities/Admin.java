@@ -1,5 +1,6 @@
 package fr.adaming.entities;
 
+//classe admin
 public class Admin {
 	
 //	attributs
