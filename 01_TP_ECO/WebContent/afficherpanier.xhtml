@@ -19,7 +19,7 @@
 	<h3>Votre panier : </h3>
 		<br/>
 		<p:separator/>
-		<p:dataTable var="liste" value="#{clientManagedBean.listePanier}">
+		<p:dataTable id="listeP" var="liste" value="#{clientManagedBean.listePanier}">
 		  
     <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
@@ -33,14 +33,18 @@
     <p:column headerText="Quantité(e)) :">
         <h:outputText value="#{liste.quantite}" />
     </p:column>
- <p:column headerText="Prix unitaire :">
+ <p:column headerText="Prix total :">
         <h:outputText value="#{liste.prix}" />
     </p:column>
      <p:column headerText="Retirer du panier ?">
-        <h:outputText value="oui ?" />
+        <p:commandButton value="Supprimer" icon="ui-icon-check" action="#{clientManagedBean.supprimerProduit}" update="listeP" >
+		<!--  avec un listener, récupérer le produit -->
+		<f:setPropertyActionListener value="#{liste}" target="#{clientManagedBean.produit}"></f:setPropertyActionListener>
+		 </p:commandButton>
     </p:column>
   
 </p:dataTable>
+<p:commandButton value="Vider votre panier" icon="ui-icon-check" action="#{clientManagedBean.supprimerPanier}" update="listeP" />
 <h:outputText value="Passer une commande wesh"/> 
 	
 	<!-- fin de la zone d'edition -->

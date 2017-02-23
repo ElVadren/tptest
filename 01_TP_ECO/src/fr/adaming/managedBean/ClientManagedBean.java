@@ -68,9 +68,6 @@ public class ClientManagedBean implements Serializable {
 	
 //les methodes --------------------------;
 	
-
-
-
 /**
  * la methode pour ajouter le produit dans le panier : 
  * 1 - récupération des informations complète du produit via son ID
@@ -80,13 +77,29 @@ public class ClientManagedBean implements Serializable {
 
  */
 	public void ajoutPanier(){
-	System.out.println("la quantitée récupérée ?");
+	System.out.println("la quantitée récupérée =");
 	System.out.println(produit.getQuantite());
-	produit = clientService.getProduitByIdService(produit.getIdProduit());
-	double nouveauprix = produit.getPrix();
-	produit.setPrix(nouveauprix);
-	this.listePanier.add(produit);
+	System.out.println("L'id produit récupéré =");
+	System.out.println(produit.getIdProduit());
+	int quantite = produit.getQuantite();
+	Produit produitadd = clientService.getProduitByIdService(produit.getIdProduit());
+	produitadd.setQuantite(quantite);
+	double nouveauprix = produitadd.getPrix() * quantite;
+	produitadd.setPrix(nouveauprix);
+	this.listePanier.add(produitadd);
 	}
 	
+	/**
+	 * la methode pour supprimer un produit du panier
+	 */
+	public void supprimerProduit(){
+		this.listePanier.remove(produit);
+	}
 	
+	/**
+	 * Cette méthode permet de vider intégralement le panier de la session
+	 */
+	public void supprimerPanier(){
+		this.listePanier.clear();;
+	}
 }

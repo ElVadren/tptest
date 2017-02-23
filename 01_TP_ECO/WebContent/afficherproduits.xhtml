@@ -18,13 +18,14 @@
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 	<h:form>
 		<p:inputText value="#{navigationManagedBean.categorie.idCategorie}" />
-		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="test"/>
+		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="idtableauresult"/>
 	</h:form>
 		<br/>
 		<p:separator/>
-		<p:dataTable id="test" var="liste" value="#{navigationManagedBean.listeProduit}">
+	
+		<p:dataTable  var="liste" value="#{navigationManagedBean.listeProduit}" id="idtableauresult">
 		  
-    <p:column headerText="Id :">
+   <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
     </p:column>
  <p:column headerText="Designation :">
@@ -35,9 +36,6 @@
     </p:column>
  <p:column headerText="Prix :">
         <h:outputText value="#{liste.prix}" />
-    </p:column>
- <p:column headerText="Prix :">
-      
     </p:column>
   <p:column headerText="Achat"> 
   <h:form>
@@ -51,7 +49,6 @@
   
 </p:dataTable>
 
-	
 	<!-- fin de la zone d'edition -->
 			
 		</ui:define>
