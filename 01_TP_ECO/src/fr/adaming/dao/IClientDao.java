@@ -5,7 +5,6 @@
  * - rechercher produit par mot clé 
  */
 
-
 package fr.adaming.dao;
 
 import java.util.List;
@@ -17,12 +16,19 @@ import fr.adaming.entities.Produit;
 
 @Local
 public interface IClientDao {
-	
-	//la méthode pour récupérer la liste des catégories
-	public List<Categorie> getAllCategorie ();
-	
-	//la méthode pour afficher les produits par catégories 
-	public List<Produit> getProduitsByCategorie (Categorie categorie);
-	
 
+	/**
+	 * afficher la liste des catégories
+	 */
+	public List<Categorie> getAllCategorie();
+
+	/**
+	 * afficher des produits par catégorie
+	 */
+	public List<Produit> getProduitsByCategorie(Categorie categorie);
+
+	/**
+	 * la methode pour rechercher des produits selon un mots clés :
+	 */
+	public List<Produit> getProduitsByMot(String saisie);
 }

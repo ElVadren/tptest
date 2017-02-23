@@ -42,6 +42,7 @@ public class NavigationManagedBean implements Serializable{
 	private List<Categorie> listeCategorie;
 	private List<Produit> listeProduit;
 	private Categorie categorie;
+	private String saisie;
 
 /**
  * Instation pour le lien avec le service :
@@ -97,6 +98,13 @@ public List<Produit> getListeProduit() {
 	}
 	
 	
+public String getSaisie() {
+		return saisie;
+	}
+
+	public void setSaisie(String saisie) {
+		this.saisie = saisie;
+	}
 
 /**
  * Déclaration des méthodes :
@@ -124,5 +132,13 @@ public List<Produit> getListeProduit() {
 	public void listePro(){
 		this.listeProduit = clientService.getProduitsByCategorieService(categorie);
 		this.rendu = true;
+	}
+	
+	/**la methode pour obtenir la liste des produits par mot clés :
+	 * 
+	 */
+	public void listeMot(){
+		this.listeProduit = clientService.getProduitsByMotService(saisie);
+		this.rendu=true;
 	}
 }

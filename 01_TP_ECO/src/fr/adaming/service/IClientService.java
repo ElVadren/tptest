@@ -13,5 +13,6 @@ public interface IClientService {
 	
 	public List<Categorie> getAllCategorieService ();
 	public List<Produit> getProduitsByCategorieService (Categorie categorie); 
+	public List<Produit> getProduitsByMotService(String saisie);
 	
 }

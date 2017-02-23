@@ -31,4 +31,12 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getProduitsByCategorie(categorie);
 	}
 
+	/**
+	 * la methode pour obtenir les produits selon un mot clés 
+	 */
+	@Override
+	public List<Produit> getProduitsByMotService(String saisie) {
+		return clientDao.getProduitsByMot(saisie);
+	}
+
 }
