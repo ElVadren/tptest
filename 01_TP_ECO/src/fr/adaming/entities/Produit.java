@@ -6,6 +6,9 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
+
+
 
 public class Produit implements Serializable {
 
@@ -20,6 +23,9 @@ public class Produit implements Serializable {
 	private int quantite;
 	private boolean selectionne;
 
+//--------------declaration des liaisons :
+	//0 to many commandes :
+	private List<Commande> listeCommande;
 	
 //---------- déclaration des constructeurs :
 	
@@ -100,13 +106,21 @@ public class Produit implements Serializable {
 		this.selectionne = selectionne;
 	}
 
+	//getter et setter pour la liste commande 
+	public List<Commande> getListeCommande() {
+		return listeCommande;
+	}
 
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
+	}
 
 	
 //------------les méthodes :
 	
 	//méthode toString qui affiche Id, designation, description, prix
 	
+
 
 	@Override
 	public String toString() {
