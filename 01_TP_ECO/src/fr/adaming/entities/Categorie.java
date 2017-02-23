@@ -1,13 +1,34 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="categorie")
 public class Categorie implements Serializable {
 
+	@Id
+	@Column(name="id_categorie")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 //	attributs
 	private long idCategorie;
 	private String nomCategorie;
 	private String description;
+	
+//	clé étrangère de la classe produit : association d'une liste de produit à une catégorie
+	@OneToMany(mappedBy="categorie")
+	private List<Produit> listProduit;
+	
 	
 	
 //	get et set

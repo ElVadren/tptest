@@ -1,11 +1,27 @@
 package fr.adaming.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 //classe admin
+
+@Entity
+@Table(name="admin")
 public class Admin {
 	
 //	attributs
+	@Id
+	@Column(name="id_admin")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idAdmin;
+	
+	@Column(name="nom_admin")
 	private String nomAdmin;
+	@Column(name="password_admin")
 	private String passwordAdmin;
 	
 //	get et set

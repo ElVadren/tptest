@@ -5,16 +5,41 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="client")
 public class Client implements Serializable{
 
+	
 //déclaration des attributs -----------------:
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long idClient;
+	@Column(name="nom_client")
 	private String nomClient;
+	@Column(name="adresse")
 	private String adresse;
+	@Column(name="email")
 	private String email;
+	@Column(name="tel")
 	private String tel;
+	
+//	clé étrangère de la classe Commande : associe une liste de commande à un client
+	@OneToMany(mappedBy="client")
+	private List<Commande> listCommande;
 	
 //déclaration des constructeurs ---------------:
 	
@@ -84,9 +109,20 @@ public class Client implements Serializable{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	
+	public List<Commande> getListCommande() {
+		return listCommande;
+	}
+
+	public void setListCommande(List<Commande> listCommande) {
+		this.listCommande = listCommande;
+	}
+	
 
 //les méthodes --------------------------:
 	
+
+
 	//toString 
 	@Override
 	public String toString() {
