@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -25,14 +27,14 @@ public class LigneCommande implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_ligneCommande")
 	private long idLigneCommande;
-	@Column(name="quantite")
+	@Column(name="quantite_ligneCommande")
 	private int quantite;
-	@Column(name="prix")
+	@Column(name="prix_ligneCommande")
 	private double prix;
-	
-	@ManyToOne
-	@JoinColumn(name="panier_id_fk", referencedColumnName="id_panier")
+
 	private Panier panier;
 	
 	

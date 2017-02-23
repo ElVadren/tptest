@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -34,8 +35,9 @@ public class Commande implements Serializable {
 //déclaration des liaisons :
 	
 	//liaison entre commande et produits :
-	@ManyToMany(mappedBy="listeCommande")
-	@JoinColumn(name="produit_id_fk", referencedColumnName="id_produit")
+	@ManyToMany
+	@JoinTable(name="jointure_commandes_produits", joinColumns=@JoinColumn(name="commande_id_fk"),
+	inverseJoinColumns=@JoinColumn(name="produits_id_fk"))
 	private List<Produit> listeProduit;
 	
 	//liaison entre commandes et clients :

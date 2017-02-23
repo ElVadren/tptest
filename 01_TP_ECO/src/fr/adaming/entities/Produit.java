@@ -45,13 +45,12 @@ public class Produit implements Serializable {
 
 //--------------declaration des liaisons :
 	//liaison commandes et produits :
-	@ManyToMany
-	@JoinColumn(name="commande_id_fk", referencedColumnName="id_commande")
+	@ManyToMany(mappedBy="listeProduit")
 	private List<Commande> listeCommande;
 	
 	//liaison produits et catégories :
 	@ManyToOne
-	@JoinColumn(name="produit_id_fk", referencedColumnName="id_produit")
+	@JoinColumn(name="categorie_id_fk", referencedColumnName="id_categorie")
 	private Categorie categorie;
 	
 	

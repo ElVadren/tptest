@@ -15,7 +15,7 @@
 <class>fr.adaming.entities.Client</class>
 <class>fr.adaming.entities.Commande</class>
 <class>fr.adaming.entities.LigneCommande</class>
-<class>fr.adaming.entities.Panier</class>
+
 <class>fr.adaming.entities.Produit</class>
 	
 <!-- propriété de connexion -->
