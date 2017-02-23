@@ -1,5 +1,5 @@
 /**
- * Déclaration de la classe Produit 
+ * DÃ©claration de la classe Produit 
  */
 
 
@@ -11,7 +11,7 @@ public class Produit implements Serializable {
 
 
 	
-//-------------déclaration des attributs :
+//-------------dÃ©claration des attributs :
 	private static final long serialVersionUID = 1L;
 	private long idProduit;
 	private String designation;
@@ -21,14 +21,14 @@ public class Produit implements Serializable {
 	private boolean selectionne;
 
 	
-//---------- déclaration des constructeurs :
+//---------- dÃ©claration des constructeurs :
 	
 		//un vide	
 	public Produit() {
 		super();
 	}
 
-	//constructeur avec designation, description, prix (pour création)
+	//constructeur avec designation, description, prix (pour crÃ©ation)
 	public Produit(String designation, String description, double prix) {
 		super();
 		this.designation = designation;
@@ -103,9 +103,9 @@ public class Produit implements Serializable {
 
 
 	
-//------------les méthodes :
+//------------les mÃ©thodes :
 	
-	//méthode toString qui affiche Id, designation, description, prix
+	//mÃ©thode toString qui affiche Id, designation, description, prix
 	
 
 	@Override
