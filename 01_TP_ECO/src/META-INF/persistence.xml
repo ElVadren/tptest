@@ -6,7 +6,7 @@
 	<persistence-unit name="PU" transaction-type="JTA">
 
 <!--  déclaration de la data source -->
-		<jta-data-source>java:/mabasetp</jta-data-source>
+		<jta-data-source>java:/tpeco</jta-data-source>
 
 
 	

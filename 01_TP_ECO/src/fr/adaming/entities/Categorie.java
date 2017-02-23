@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categorie")
+@Table(name="categories")
 public class Categorie implements Serializable {
 
 	

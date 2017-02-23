@@ -10,7 +10,7 @@ import javax.persistence.Table;
 //classe admin
 
 @Entity
-@Table(name="admin")
+@Table(name="admins")
 public class Admin {
 	
 //	attributs
