@@ -39,9 +39,9 @@ public class Produit implements Serializable {
 	@Column(name="prix_produit")
 	private double prix;
 	@Column(name="quantite_produit")
-	private int quantite;
+	private int quantite=0;
 	@Column(name="selectionne_produit")
-	private boolean selectionne;
+	private boolean selectionne=false;
 
 //--------------declaration des liaisons :
 	//liaison commandes et produits :

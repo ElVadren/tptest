@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Produit;
 
 @Stateless
 public class ClientDaoImpl implements IClientDao {
@@ -32,6 +33,35 @@ public class ClientDaoImpl implements IClientDao {
 			return listeCategorie;
 		}else{
 		System.out.println("la liste est vide");
+		return null;
+		}
+	}
+
+	/**
+	 * La méthode pour obtenir la liste des produits par catégorie :
+	 */
+	@Override
+	public List<Produit> getProduitsByCategorie(Categorie categorie) {
+		System.out.println("LEURRREUR NIQUE TA MAMAMMM");
+		Produit p1 = new Produit ("Rateau","Un joli rateau",15);
+		em.persist(p1);
+		System.out.println(p1);
+		/**
+		 * écriture de la requête
+		 */
+		String req = "select p from Produit p where p.categorie.idCategorie=:idCategorie";
+		/**
+		 * Insertion dans une query et remplacement du pseudo par l'id de la catégorie choisie
+		 */
+		Query query = em.createQuery(req);
+		query.setParameter("idCategorie", categorie.getIdCategorie());
+		/**
+		 * Récupération des résultats dans une liste et transmission
+		 */
+		List<Produit> listeProduitCat = query.getResultList();
+		if(listeProduitCat.size()!=0){
+		return listeProduitCat;
+		}else{
 		return null;
 		}
 	}

@@ -16,6 +16,7 @@ import javax.faces.bean.ViewScoped;
 
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Produit;
 import fr.adaming.service.IClientService;
 
 /** 
@@ -39,6 +40,8 @@ public class NavigationManagedBean implements Serializable{
 	private Client client;
 	private boolean rendu;
 	private List<Categorie> listeCategorie;
+	private List<Produit> listeProduit;
+	private Categorie categorie;
 
 /**
  * Instation pour le lien avec le service :
@@ -52,6 +55,7 @@ public class NavigationManagedBean implements Serializable{
  */
 public NavigationManagedBean() {
 	this.client = new Client();
+	this.categorie = new Categorie();
 }
 
 /**
@@ -82,14 +86,43 @@ public void setClient(Client client) {
 	public void setRendu(boolean rendu) {
 		this.rendu = rendu;
 	}
+	
+	
+public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
+	}
+	
+	
+
 /**
  * Déclaration des méthodes :
  */
 	
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	/**
+	 * la methode pour obtenir la liste des catégorie
+	 */
 	public void listeCat(){
 		this.listeCategorie = clientService.getAllCategorieService();
 		this.rendu = true;	
 	}
 
-
+	/**
+	 * la méthode pour obtenir la liste des produits par catégorie :
+	 */
+	public void listePro(){
+		this.listeProduit = clientService.getProduitsByCategorieService(categorie);
+		this.rendu = true;
+	}
 }

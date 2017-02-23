@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>la liste des catégories</title>
+</h:head>
+<h:body>
+	<div align="center">
+
+	<h:form>
+		<p:inputText value="#{navigationManagedBean.categorie.idCategorie}" />
+		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="@all"/>
+	</h:form>
+		<br/>
+		<p:separator/>
+		<p:dataTable var="liste" value="#{navigationManagedBean.listeProduit}" rendered="#{navigationManagedBean.rendu}">
+		
+    <p:column headerText="Id :">
+        <h:outputText value="#{liste.idProduit}" />
+    </p:column>
+ <p:column headerText="Designation :">
+        <h:outputText value="#{liste.designation}" />
+    </p:column>
+ <p:column headerText="Description :">
+        <h:outputText value="#{liste.description}" />
+    </p:column>
+ <p:column headerText="Prix :">
+        <h:outputText value="#{liste.prix}" />
+    </p:column>
+</p:dataTable>
+	</div>
+</h:body>
+</html>

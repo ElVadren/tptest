@@ -13,6 +13,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Produit;
 
 @Local
 public interface IClientDao {
@@ -20,6 +21,8 @@ public interface IClientDao {
 	//la méthode pour récupérer la liste des catégories
 	public List<Categorie> getAllCategorie ();
 	
+	//la méthode pour afficher les produits par catégories 
+	public List<Produit> getProduitsByCategorie (Categorie categorie);
 	
 
 }
