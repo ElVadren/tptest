@@ -9,6 +9,18 @@
 </h:head>
 <h:body>
 	<div align="center">
+	<h1>Afficher les categories</h1>
+	
+	<br/>
+	<h:form>
+<p:breadCrumb>
+    <p:menuitem value="Accueil" url="index.xhtml" />
+    <p:menuitem value="Chercher un produit" url="afficherproduits2.xhtml" />
+    <p:menuitem value="Chercher produit par catégorie" url="afficherproduits.xhtml" />
+    <p:menuitem value="Afficher les catégories" url="affichercategories.xhtml" />
+</p:breadCrumb>
+	</h:form>
+<p:separator/>
 
 	<h:form>
 		 <p:commandButton value="afficher la liste des catégories" icon="ui-icon-check" action="#{navigationManagedBean.listeCat}" update="@all"/>

@@ -141,4 +141,12 @@ public String getSaisie() {
 		this.listeProduit = clientService.getProduitsByMotService(saisie);
 		this.rendu=true;
 	}
+	
+	
+	
+//methode a supprimer à la fin :
+	public void remplir(){
+		clientService.remplirbddService();
+	}
+	
 }

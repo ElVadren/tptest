@@ -39,4 +39,10 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getProduitsByMot(saisie);
 	}
 
+	@Override
+	public void remplirbddService() {
+		clientDao.remplirbdd();
+		
+	}
+
 }

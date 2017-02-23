@@ -141,12 +141,22 @@ public class Produit implements Serializable {
 	public void setListeCommande(List<Commande> listeCommande) {
 		this.listeCommande = listeCommande;
 	}
+	
+	
 
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
 	
 //------------les méthodes :
 	
 	//méthode toString qui affiche Id, designation, description, prix
 	
+
 
 
 	@Override

@@ -31,4 +31,10 @@ public interface IClientDao {
 	 * la methode pour rechercher des produits selon un mots clés :
 	 */
 	public List<Produit> getProduitsByMot(String saisie);
+	
+	
+	
+	
+	//méthode à supprimer à la fin 
+	public void remplirbdd();
 }
