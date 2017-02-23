@@ -2,9 +2,12 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 /**
  * 
- * lasse Ligne commande
+ * classe Ligne commande
  *
  */
 
@@ -18,6 +21,11 @@ public class LigneCommande implements Serializable {
 	private long idLigneCommande;
 	private int quantite;
 	private double prix;
+	
+	@ManyToOne
+	@JoinColumn(name="panier_id_fk", referencedColumnName="id_panier")
+	private Panier panier;
+	
 	
 //les constructeurs --------------------:
 	
@@ -66,9 +74,18 @@ public class LigneCommande implements Serializable {
 		this.prix = prix;
 	}
 
+	public Panier getPanier() {
+		return panier;
+	}
+
+	public void setPanier(Panier panier) {
+		this.panier = panier;
+	}
+	
 	
 //methodes -----------------------:
 	
+
 	@Override
 	public String toString() {
 		return "LigneCommande [idLigneCommande=" + idLigneCommande + ", quantite=" + quantite + ", prix=" + prix + "]";
