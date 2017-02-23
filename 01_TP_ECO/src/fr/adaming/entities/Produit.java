@@ -8,23 +8,43 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 
+@Entity
+@Table(name="produits")
 public class Produit implements Serializable {
 
 
 	
 //-------------déclaration des attributs :
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_produit")
 	private long idProduit;
+	@Column(name="designation_produit")
 	private String designation;
+	@Column(name="description_produit")
 	private String description;
+	@Column(name="prix_produit")
 	private double prix;
+	@Column(name="quantite_produit")
 	private int quantite;
+	@Column(name="selectionne_produit")
 	private boolean selectionne;
 
 //--------------declaration des liaisons :
-	//0 to many commandes :
+	//liaison commandes et produits :
+	@ManyToMany
+	@JoinColumn(name="commande_id_fk", referencedColumnName="id_commande")
 	private List<Commande> listeCommande;
 	
 //---------- déclaration des constructeurs :

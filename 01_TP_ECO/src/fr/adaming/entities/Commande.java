@@ -8,15 +8,33 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="commandes")
 public class Commande implements Serializable {
 
 //----------------les attributs :
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id_commande")
 	private long idCommande;
+	@Column(name="date_commande")
 	private Date dateCommande;
 
 //déclaration des liaisons :
 	
+	//liaison entre commande et produits :
+	@ManyToMany(mappedBy="listeCommande")
+	@JoinColumn(name="produit_id_fk", referencedColumnName="id_produit")
 	private List<Produit> listeProduit;
 	
 //--------------Constructeurs :
