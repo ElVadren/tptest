@@ -69,6 +69,13 @@ public class Categorie implements Serializable {
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "Categorie [idCategorie=" + idCategorie + ", nomCategorie=" + nomCategorie + ", description="
+				+ description + "]";
+	}
+	
+	
 	
 	
 	

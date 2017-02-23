@@ -56,6 +56,10 @@ public class Admin {
 public Admin() {
 	super();
 }
+@Override
+public String toString() {
+	return "Admin [idAdmin=" + idAdmin + ", nomAdmin=" + nomAdmin + ", passwordAdmin=" + passwordAdmin + "]";
+}
 	
 	
 
