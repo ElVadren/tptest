@@ -15,6 +15,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
 
@@ -46,6 +48,12 @@ public class Produit implements Serializable {
 	@ManyToMany
 	@JoinColumn(name="commande_id_fk", referencedColumnName="id_commande")
 	private List<Commande> listeCommande;
+	
+	//liaison produits et catégories :
+	@ManyToOne
+	@JoinColumn(name="produit_id_fk", referencedColumnName="id_produit")
+	private Categorie categorie;
+	
 	
 //---------- dÃ©claration des constructeurs :
 	

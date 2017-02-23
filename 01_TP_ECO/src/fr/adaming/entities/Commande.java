@@ -15,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,6 +37,11 @@ public class Commande implements Serializable {
 	@ManyToMany(mappedBy="listeCommande")
 	@JoinColumn(name="produit_id_fk", referencedColumnName="id_produit")
 	private List<Produit> listeProduit;
+	
+	//liaison entre commandes et clients :
+	@ManyToOne
+	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
+	private Client client;
 	
 //--------------Constructeurs :
 	
@@ -85,6 +91,16 @@ public class Commande implements Serializable {
 
 	public void setListeProduit(List<Produit> listeProduit) {
 		this.listeProduit = listeProduit;
+	}
+	
+	
+	//clients
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	//-------------------------les méthodes :	
