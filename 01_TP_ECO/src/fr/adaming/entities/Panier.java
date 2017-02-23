@@ -8,7 +8,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="paniers")
 public class Panier extends LigneCommande{
 
 //déclaration des attributs	
