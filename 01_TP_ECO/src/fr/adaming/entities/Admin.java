@@ -60,7 +60,7 @@ public Admin() {
 public String toString() {
 	return "Admin [idAdmin=" + idAdmin + ", nomAdmin=" + nomAdmin + ", passwordAdmin=" + passwordAdmin + "]";
 }
-	
+
 	
 
 	
