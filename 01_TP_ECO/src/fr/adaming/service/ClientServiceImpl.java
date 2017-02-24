@@ -62,6 +62,11 @@ public class ClientServiceImpl implements IClientService {
 		
 	}
 
+	@Override
+	public void enregistrementCommandeService(Client client, List<Produit> listeProduit) {
+		clientDao.enregistrementCommande(client, listeProduit);
+	}
+
 
 
 }

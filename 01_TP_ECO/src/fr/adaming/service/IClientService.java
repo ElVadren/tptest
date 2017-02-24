@@ -17,7 +17,7 @@ public interface IClientService {
 	public List<Produit> getProduitsByMotService(String saisie);
 	public Produit getProduitByIdService (long id);
 	public void enregistrementClientService (Client client);
-	
+	public void enregistrementCommandeService (Client client, List<Produit> listeProduit);
 	//méthode à supprimer à la fin 
 		public void remplirbddService();
 	

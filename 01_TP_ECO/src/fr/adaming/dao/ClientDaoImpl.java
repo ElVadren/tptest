@@ -1,5 +1,7 @@
 package fr.adaming.dao;
 
+import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -10,6 +12,9 @@ import javax.persistence.Query;
 
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Commande;
+import fr.adaming.entities.LigneCommande;
+import fr.adaming.entities.Panier;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -111,6 +116,31 @@ public class ClientDaoImpl implements IClientDao {
 		em.persist(client);	
 	}
 
+	/**
+	 * La méthode débute par la création d'une nouvelle commande :
+	 * On lui attribut le client.
+	 * Il faut ensuite enregistrer la liste dans la base de donnée 
+	 */
+	@Override
+	public void enregistrementCommande(Client client, List<Produit> listeProduit) {
+		Commande commande = new Commande ();
+		commande.setClient(client);
+		Panier panier = new Panier ();
+		List<LigneCommande> listeC = new ArrayList<LigneCommande>();
+		for (Produit p:listeProduit){
+			LigneCommande produitc = new LigneCommande();
+			produitc.setDesignation(p.getDesignation());
+			produitc.setDescription(p.getDescription());
+			produitc.setQuantite(p.getQuantite());
+			produitc.setPrix(p.getPrix());
+			listeC.add(produitc);
+		}
+		panier.setListProduit(listeC);
+		commande.setPanier(panier);
+	
+		em.persist(commande);
+	}
+	
 //methodeeeeeee a supprimer après
 	@Override
 	public void remplirbdd() {
@@ -157,6 +187,8 @@ public class ClientDaoImpl implements IClientDao {
 		em.persist(c3);
 		em.persist(c4);
 	}
+
+	
 
 	
 

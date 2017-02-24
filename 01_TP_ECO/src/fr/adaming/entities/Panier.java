@@ -3,7 +3,7 @@ package fr.adaming.entities;
 import java.io.Serializable;
 import java.util.List;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,7 +29,7 @@ public class Panier implements Serializable{
 	private int id;
 
 	
-	@OneToMany(mappedBy="panier")
+	@OneToMany(mappedBy="panier", cascade=CascadeType.ALL)
 	private List<LigneCommande> listProduit;
 	
 	@OneToOne(mappedBy="panier")

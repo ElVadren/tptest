@@ -145,7 +145,7 @@ public class ClientManagedBean implements Serializable {
 	}
 	
 	public void savePanier(){
-		
+		clientService.enregistrementCommandeService(client, listePanier);
 	}
 	
 }

@@ -43,6 +43,9 @@ public interface IClientDao {
 	 */
 	public void enregistrementClient (Client client);
 	
+	
+	public void enregistrementCommande (Client client, List<Produit> listeProduit);
+	
 	//méthode à supprimer à la fin 
 	public void remplirbdd();
 }
