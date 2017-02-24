@@ -6,17 +6,18 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -34,16 +35,16 @@ public class Commande implements Serializable {
 
 //déclaration des liaisons :
 	
-	//liaison entre commande et produits :
-	@ManyToMany
-	@JoinTable(name="jointure_commandes_produits", joinColumns=@JoinColumn(name="commande_id_fk"),
-	inverseJoinColumns=@JoinColumn(name="produits_id_fk"))
-	private List<Produit> listeProduit;
-	
+
 	//liaison entre commandes et clients :
 	@ManyToOne
 	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
 	private Client client;
+	
+	//liaison entre commande et panier
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="panier_id_fk", referencedColumnName="id_panier")
+	private Panier panier;
 	
 //--------------Constructeurs :
 	
@@ -86,16 +87,16 @@ public class Commande implements Serializable {
 	}
 
 
-	//pour la liste produit
-	public List<Produit> getListeProduit() {
-		return listeProduit;
+
+	
+	public Panier getPanier() {
+		return panier;
 	}
 
-	public void setListeProduit(List<Produit> listeProduit) {
-		this.listeProduit = listeProduit;
+	public void setPanier(Panier panier) {
+		this.panier = panier;
 	}
-	
-	
+
 	//clients
 	public Client getClient() {
 		return client;

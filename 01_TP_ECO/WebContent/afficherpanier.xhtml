@@ -50,7 +50,8 @@
 <br/><br/>
 
 		<h:outputLink value="enregistrement.xhtml" rendered="#{clientManagedBean.rendu1}">Passer votre commande</h:outputLink>
-		
+		<!--  bouton destiné à la suppression juste présent pour tester l'enregistrement d'une commande -->
+		<p:commandButton value="Enregistrer la commande"  action="#{clientManagedBean.savePanier}" rendered="#{clientManagedBean.rendu1}"/>
 	<!-- fin de la zone d'edition -->
 			
 		</ui:define>

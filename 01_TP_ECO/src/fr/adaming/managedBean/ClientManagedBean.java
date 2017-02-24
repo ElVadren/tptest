@@ -144,5 +144,8 @@ public class ClientManagedBean implements Serializable {
 		return "validercommande";
 	}
 	
+	public void savePanier(){
+		
+	}
 	
 }

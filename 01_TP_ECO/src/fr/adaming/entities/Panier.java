@@ -1,48 +1,93 @@
 package fr.adaming.entities;
 
+import java.io.Serializable;
 import java.util.List;
 
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 
-
-public class Panier extends LigneCommande{
+@Entity
+@Table(name="paniers")
+public class Panier implements Serializable{
 
 //déclaration des attributs	
 	private static final long serialVersionUID = 1L;
 	
 	
 
-
-	private List<LigneCommande> ligneCommande;
-	
-
-	
-	
-	
-//	get et set
-
-	public List<LigneCommande> getLigneCommande() {
-		return ligneCommande;
-	}
-
-
-	public void setLigneCommande(List<LigneCommande> ligneCommande) {
-		this.ligneCommande = ligneCommande;
-	}
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@Column(name="id_panier")
+	private int id;
 
 	
+	@OneToMany(mappedBy="panier")
+	private List<LigneCommande> listProduit;
 	
-//constructeur
-	public Panier(List<LigneCommande> ligneCommande) {
-		super();
-		this.ligneCommande = ligneCommande;
-	}
-
-
+	@OneToOne(mappedBy="panier")
+	private Commande commande;
+	
+	
+	
 	public Panier() {
 		super();
 	}
+
+	
+
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+	
+
+
+	public Commande getCommande() {
+		return commande;
+	}
+
+
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
+
+
+
+
+	public List<LigneCommande> getListProduit() {
+		return listProduit;
+	}
+
+
+
+
+
+	public void setListProduit(List<LigneCommande> listProduit) {
+		this.listProduit = listProduit;
+	}
+	
+
+	
+	
+
 	
 	
 }

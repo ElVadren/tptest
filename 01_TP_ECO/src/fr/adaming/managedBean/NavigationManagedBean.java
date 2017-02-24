@@ -138,12 +138,17 @@ public String getSaisie() {
 	}
 	
 	/**la methode pour obtenir la liste des produits par mot clés :
-	 * 
+	 * Via ajax, les résultats sont rafraichis en direct à la saisie.
+	 * Il faut donc préciser que si la saisie est vide, il faut reset l'affichage + le rendu
 	 */
 	public void listeMot(){
-		System.out.println("je lance bien la methode ");
+		if(saisie==null){
+			this.rendu=false;
+			this.listeProduit.clear();
+		}else{
 		this.listeProduit = clientService.getProduitsByMotService(saisie);
 		this.rendu=true;
+		}
 	}
 	
 

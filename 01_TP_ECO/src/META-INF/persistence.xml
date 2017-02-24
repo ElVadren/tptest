@@ -11,16 +11,17 @@
 		
 <!--  classes managés -->
 <class>fr.adaming.entities.Admin</class>
+<class>fr.adaming.entities.Produit</class>
 <class>fr.adaming.entities.Categorie</class>
 <class>fr.adaming.entities.Client</class>
-<class>fr.adaming.entities.Commande</class>
+<class>fr.adaming.entities.Panier</class>
 <class>fr.adaming.entities.LigneCommande</class>
+<class>fr.adaming.entities.Commande</class>	
 
-<class>fr.adaming.entities.Produit</class>
-	
+
 <!-- propriété de connexion -->
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
 			<property name="hibernate.show_sql" value="true" />
 			
 		</properties>

@@ -6,7 +6,8 @@
 package fr.adaming.entities;
 
 import java.io.Serializable;
-import java.util.List;
+
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +15,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
@@ -44,10 +44,7 @@ public class Produit implements Serializable {
 	private boolean selectionne=false;
 
 //--------------declaration des liaisons :
-	//liaison commandes et produits :
-	@ManyToMany(mappedBy="listeProduit")
-	private List<Commande> listeCommande;
-	
+
 	//liaison produits et cat�gories :
 	@ManyToOne
 	@JoinColumn(name="categorie_id_fk", referencedColumnName="id_categorie")
@@ -133,15 +130,6 @@ public class Produit implements Serializable {
 		this.selectionne = selectionne;
 	}
 
-	//getter et setter pour la liste commande 
-	public List<Commande> getListeCommande() {
-		return listeCommande;
-	}
-
-	public void setListeCommande(List<Commande> listeCommande) {
-		this.listeCommande = listeCommande;
-	}
-	
 	
 
 	public Categorie getCategorie() {
@@ -152,10 +140,14 @@ public class Produit implements Serializable {
 		this.categorie = categorie;
 	}
 	
+
+
+	
 //------------les méthodes :
 	
 	//méthode toString qui affiche Id, designation, description, prix
 	
+
 
 
 
