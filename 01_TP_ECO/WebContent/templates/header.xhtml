@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
 	<h:outputStylesheet library="css" name="style.css" />
@@ -11,6 +12,7 @@
 
 <h:body>
 	<!--  le header  -->
+	<ui:composition>
 <h1>Le header de la page !</h1>
 	
 	<br/>
@@ -24,6 +26,7 @@
 </p:breadCrumb>
 	</h:form>
 <p:separator/>
+</ui:composition>
 </h:body>
 
 </html>

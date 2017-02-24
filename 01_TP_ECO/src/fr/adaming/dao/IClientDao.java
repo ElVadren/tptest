@@ -12,6 +12,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
 
 @Local
@@ -36,6 +37,11 @@ public interface IClientDao {
 	 * méthode pour récupérer l'intégralité d'un produit par son id :
 	 */
 	public Produit getProduitById (long id);
+	
+	/**
+	 * methode pour enregistrement d'un client
+	 */
+	public void enregistrementClient (Client client);
 	
 	//méthode à supprimer à la fin 
 	public void remplirbdd();

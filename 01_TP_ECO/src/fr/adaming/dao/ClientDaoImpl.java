@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -102,6 +103,13 @@ public class ClientDaoImpl implements IClientDao {
 		}
 	}
 
+	/**
+	 * methode pour enregistrer un nouveau client dans la bdd
+	 */
+	@Override
+	public void enregistrementClient(Client client) {
+		em.persist(client);	
+	}
 
 //methodeeeeeee a supprimer après
 	@Override
@@ -149,6 +157,8 @@ public class ClientDaoImpl implements IClientDao {
 		em.persist(c3);
 		em.persist(c4);
 	}
+
+	
 
 
 	

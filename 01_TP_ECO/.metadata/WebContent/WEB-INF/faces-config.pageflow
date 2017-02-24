@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14878454633900" configfile="/01_TP_ECO/WebContent/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="authentificationAdmin.xhtml" x="122" y="178" id="pf14878838777740" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf14878838777741 pf14878838777742" inlinks="pf14878838777742" path="/authentificationAdmin.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf14878838777745" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf14878838777741" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="authentificationAdmin.xhtml" x="122" y="178" id="pf14878838777740" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" outlinks="pf14878838777741 pf14878838777742" inlinks="pf14878838777742" path="/authentificationAdmin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="338" y="178" id="pf14878838777745" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf14878838777741" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="afficherpanier.xhtml" x="122" y="562" id="pf148789465942710" referenceLink="//@navigationRule.1/@fromViewId|" path="afficherpanier.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="enregistrement.xhtml" x="122" y="946" id="pf148789465942712" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" path="enregistrement.xhtml"/>
   <links id="pf14878838777741" target="pf14878838777745" source="pf14878838777740" outcome="succes"/>
   <links id="pf14878838777742" target="pf14878838777740" source="pf14878838777740" outcome="echec">
     <bendPoints d1Height="-36" d2Height="-36"/>

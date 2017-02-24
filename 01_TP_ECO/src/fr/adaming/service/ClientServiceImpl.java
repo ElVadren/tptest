@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 
 import fr.adaming.dao.IClientDao;
 import fr.adaming.entities.Categorie;
+import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -40,6 +41,12 @@ public class ClientServiceImpl implements IClientService {
 	}
 
 
+	@Override
+	public void enregistrementClientService(Client client) {
+		clientDao.enregistrementClient(client);
+		
+	}
+
 	/**
 	 * la methode pour obtenir un produit par son ID
 	 */
@@ -54,6 +61,7 @@ public class ClientServiceImpl implements IClientService {
 		clientDao.remplirbdd();
 		
 	}
+
 
 
 }

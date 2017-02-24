@@ -102,4 +102,17 @@ public class ClientManagedBean implements Serializable {
 	public void supprimerPanier(){
 		this.listePanier.clear();;
 	}
+	
+
+	/**
+	 * méthode pour l'enregistrement d'un nouveau client
+	 * Cette méthode est uniquement disponible quand il y a des elements dans un panier 
+	 * et quand la commande va être passée
+	 */
+	public String enregistrementClient(){
+		clientService.enregistrementClientService(client);
+		return "validercommande";
+	}
+	
+	
 }
