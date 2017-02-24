@@ -141,6 +141,7 @@ public String getSaisie() {
 	 * 
 	 */
 	public void listeMot(){
+		System.out.println("je lance bien la methode ");
 		this.listeProduit = clientService.getProduitsByMotService(saisie);
 		this.rendu=true;
 	}

@@ -19,7 +19,9 @@
 	<h3>Votre panier : </h3>
 		<br/>
 		<p:separator/>
-		<p:dataTable id="listeP" var="liste" value="#{clientManagedBean.listePanier}">
+		<h:outputText value="Votre panier est vide, il faut ajouter des articles avant" rendered="#{clientManagedBean.rendu2}"></h:outputText>
+		
+		<p:dataTable id="listeP" var="liste" value="#{clientManagedBean.listePanier}" rendered="#{clientManagedBean.rendu1}">
 		  
     <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
@@ -37,17 +39,17 @@
         <h:outputText value="#{liste.prix}" />
     </p:column>
      <p:column headerText="Retirer du panier ?">
-        <p:commandButton value="Supprimer" icon="ui-icon-check" action="#{clientManagedBean.supprimerProduit}" update="listeP" >
+        <p:commandButton value="Supprimer" icon="ui-icon-check" action="#{clientManagedBean.supprimerProduit}" update="@all"  >
 		<!--  avec un listener, récupérer le produit -->
 		<f:setPropertyActionListener value="#{liste}" target="#{clientManagedBean.produit}"></f:setPropertyActionListener>
 		 </p:commandButton>
     </p:column>
   
 </p:dataTable>
-<p:commandButton value="Vider votre panier" icon="ui-icon-check" action="#{clientManagedBean.supprimerPanier}" update="listeP" />
+<p:commandButton value="Vider votre panier" icon="ui-icon-check" action="#{clientManagedBean.supprimerPanier}" update="@all" rendered="#{clientManagedBean.rendu1}"/>
 <br/><br/>
 
-		<h:outputLink value="enregistrement.xhtml">Passer votre commande</h:outputLink>
+		<h:outputLink value="enregistrement.xhtml" rendered="#{clientManagedBean.rendu1}">Passer votre commande</h:outputLink>
 		
 	<!-- fin de la zone d'edition -->
 			

@@ -18,12 +18,12 @@
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 	<h:form>
 		<p:inputText value="#{navigationManagedBean.categorie.idCategorie}" />
-		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="idtableauresult"/>
+		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="@all"/>
 	</h:form>
 		<br/>
 		<p:separator/>
 	
-		<p:dataTable  var="liste" value="#{navigationManagedBean.listeProduit}" id="idtableauresult">
+		<p:dataTable  var="liste" value="#{navigationManagedBean.listeProduit}" id="idtableauresult" rendered="#{navigationManagedBean.rendu}">
 		  
    <p:column headerText="Id :">
         <h:outputText value="#{liste.idProduit}" />
@@ -42,6 +42,7 @@
     <h:inputText value="#{clientManagedBean.produit.quantite}" />
 		 <p:commandButton value="Ajout panier" icon="ui-icon-check" action="#{clientManagedBean.ajoutPanier}" >
 		<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+		<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
 		<f:setPropertyActionListener value="#{liste.idProduit}" target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
 		 </p:commandButton>
 	</h:form>

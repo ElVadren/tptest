@@ -18,10 +18,11 @@
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 	
 <h:form>
-		<p:inputText value="#{navigationManagedBean.saisie}" />
-		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listeMot}" update="@all"/>
+		<p:inputText value="#{navigationManagedBean.saisie}" id="saisie" > <p:ajax event="keyup" update="liste1" listener="#{navigationManagedBean.listeMot}" immediate="true"/></p:inputText>
+		
 	</h:form>
 		<br/>
+		<p:layout id="liste1">
 		<p:separator/>
 		<p:dataTable var="liste" value="#{navigationManagedBean.listeProduit}" rendered="#{navigationManagedBean.rendu}">
 		
@@ -38,7 +39,7 @@
         <h:outputText value="#{liste.prix}" />
     </p:column>
 </p:dataTable>
-	
+	</p:layout>
 	<!-- fin de la zone d'edition -->
 			
 		</ui:define>
