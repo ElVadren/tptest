@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<head>
+<title>Formulaire d'ajout de catégorie par l'administrateur dans la base de données
+</title>
+</head>
+
+<body>
+
+<h:form>
+
+<h:outputText value="Description de catégorie"></h:outputText>
+<h:inputText id="description_categorie" value="#{amb.categorie.description}"></h:inputText>
+
+<h:outputText value="Nom de catégorie"></h:outputText>
+<h:inputText id="nom_categorie" value="#{amb.categorie.nomCategorie}"></h:inputText>
+
+<h:commandButton action="#{amb.ajoutCategorie}" value="valider"></h:commandButton>
+
+</h:form>
+
+
+</body>
+
+</html>

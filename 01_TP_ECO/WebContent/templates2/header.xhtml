@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+	<title>header</title>
+</h:head>
+
+<h:body>
+	<!--  le header  -->
+	<ui:composition>
+		<h1>Le header de la page !</h1>
+
+		<br />
+		<h:form>
+			<p:breadCrumb>
+				<p:menuitem value="Accueil" url="index2.xhtml" />
+				<p:menuitem value="Ajouter un produit" url="ajouterProduit.xhtml" />
+				<p:menuitem value="Modifier un produit" url="modifierProduit.xhtml" />
+				<p:menuitem value="Supprimer un produit" url="supprimerProduit.xhtml" />
+				<p:menuitem value="Rechercher un produit par id" url="rechercherProduitParIdAdmin.xhtml" />
+				<p:menuitem value="Afficher la liste des produits" url="afficherProduitsAdmin.xhtml" />
+			</p:breadCrumb>
+		</h:form>
+		<!-- <p:separator/> lien pour ajouter à la base de données-->
+
+
+	</ui:composition>
+
+</h:body>
+
+
+
+</html>

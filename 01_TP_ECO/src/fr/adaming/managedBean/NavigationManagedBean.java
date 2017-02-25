@@ -13,10 +13,13 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.persistence.Query;
 
+import fr.adaming.entities.Admin;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
+import fr.adaming.service.IAdminService;
 import fr.adaming.service.IClientService;
 
 /** 
@@ -38,10 +41,12 @@ public class NavigationManagedBean implements Serializable{
  */
 	private static final long serialVersionUID = 1L;
 	private Client client;
+	private Admin admin;
 	private boolean rendu;
 	private List<Categorie> listeCategorie;
 	private List<Produit> listeProduit;
 	private Categorie categorie;
+	private Produit produit;
 	private String saisie;
 
 
@@ -51,12 +56,16 @@ public class NavigationManagedBean implements Serializable{
 	@EJB
 	IClientService clientService;
 	
+	@EJB
+	IAdminService adminService;
 	
 /**
  * les constructeurs :	
  */
 public NavigationManagedBean() {
 	this.client = new Client();
+	this.admin = new Admin();
+	this.produit = new Produit();
 	this.categorie = new Categorie();
 }
 
@@ -106,11 +115,27 @@ public String getSaisie() {
 	public void setSaisie(String saisie) {
 		this.saisie = saisie;
 	}
+	
+	
+	
 
 
-/**
- * Déclaration des méthodes :
- */
+public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
 	
 	public Categorie getCategorie() {
 		return categorie;
@@ -120,6 +145,13 @@ public String getSaisie() {
 		this.categorie = categorie;
 	}
 
+	/**
+	 * Déclaration des méthodes :
+	 */
+	
+	/**
+	 * méthode de l'espace utilisateur
+	 */
 	/**
 	 * la methode pour obtenir la liste des catégorie
 	 */
@@ -152,6 +184,21 @@ public String getSaisie() {
 	}
 	
 
+	
+/**
+ * méthodes de l'espace admin
+ */
+	
+	/**
+	 * la méthode pour obtenir la liste des produits par id:
+	 */
+
+	public void getProduitById(){
+		this.produit = adminService.rechercherProduitParIdService(produit.getIdProduit());
+		this.rendu = true;
+	}
+	
+	
 	
 //methode a supprimer à la fin :
 	public void remplir(){

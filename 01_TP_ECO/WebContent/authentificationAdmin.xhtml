@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<!-- formulaire  d'authentification d'un administrateur -->
+
+<head>
+<title>Authentification administrateur</title>
+</head>
+
+<h:body>
+
+<h:form>
+
+Veuillez saisir vos identifiants
+
+<h:outputText value="Nom administrateur"></h:outputText>
+<h:inputText value="#{amb.admin.nomAdmin}" id="nom_admin"></h:inputText>
+
+<h:outputText value="Password administrateur"></h:outputText>
+<h:inputText value="#{amb.admin.passwordAdmin}" id="password_admin"></h:inputText>
+
+<h:commandButton value="Se connecter" action="#{amb.isExistAdminMb}"></h:commandButton>
+
+</h:form>
+
+</h:body>
+
+</html>

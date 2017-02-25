@@ -79,6 +79,17 @@ public class Produit implements Serializable {
 		this.selectionne = selectionne;
 		
 	}
+	
+	
+	
+
+public Produit(long idProduit, String designation, String description, double prix) {
+		super();
+		this.idProduit = idProduit;
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+	}
 
 //-------------getters et setters :
 	

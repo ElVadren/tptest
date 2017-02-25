@@ -56,6 +56,15 @@ public class Admin {
 public Admin() {
 	super();
 }
+
+
+
+public Admin(String nomAdmin, String passwordAdmin) {
+	super();
+	this.nomAdmin = nomAdmin;
+	this.passwordAdmin = passwordAdmin;
+}
+
 @Override
 public String toString() {
 	return "Admin [idAdmin=" + idAdmin + ", nomAdmin=" + nomAdmin + ", passwordAdmin=" + passwordAdmin + "]";

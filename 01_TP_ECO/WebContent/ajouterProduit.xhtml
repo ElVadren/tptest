@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<head>
+<title>Formulaire d'ajout de produit par l'administrateur dans la base de données
+</title>
+</head>
+
+<body>
+
+<h:form>
+
+<h:outputText value="Description de produit"></h:outputText>
+<h:inputText id="description_produit" value="#{amb.produit.description}"></h:inputText>
+
+<h:outputText value="Designation de produit"></h:outputText>
+<h:inputText id="designation_produit" value="#{amb.produit.designation }"></h:inputText>
+
+<h:outputText value="Prix de produit"></h:outputText>
+<h:inputText id="prix_produit" value="#{amb.produit.prix}"></h:inputText>
+
+<h:commandButton action="#{amb.ajoutProduit}" value="valider"></h:commandButton>
+
+</h:form>
+
+
+</body>
+
+</html>
