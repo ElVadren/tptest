@@ -31,6 +31,7 @@ public class AdminManagedBean implements Serializable {
 	private String password;
 	private long idProduit;
 	private List<Produit> listeProduits;
+	private List<Categorie> listeCategories;
 //	affichage par actualisation
 	private boolean rendu1=false;
 	private boolean rendu2=true;
@@ -115,6 +116,14 @@ public IAdminService getAdminService() {
 
 	
 	
+public List<Categorie> getListeCategories() {
+		return listeCategories;
+	}
+
+	public void setListeCategories(List<Categorie> listeCategories) {
+		this.listeCategories = listeCategories;
+	}
+
 	
 public boolean isRendu1() {
 		return rendu1;
@@ -226,6 +235,16 @@ public boolean isRendu1() {
 		}
 		
 		
+		/**
+		 * la méthode pour obtenir un produit par id:
+		 */
+
+		public void getProduitById(){
+			this.produit = adminService.rechercherProduitParIdService(produit.getIdProduit());
+			this.rendu1=false;
+			this.rendu2=true;
+		}
+		
 		
 		
 		/**
@@ -238,18 +257,67 @@ public boolean isRendu1() {
 		 * @return
 		 */
 		
-			public String ajoutCategorie() {
+			public void ajoutCategorie() {
 				
 				System.out.println("test ajoutCatégorie");
 				
 				Categorie categorieRetour = adminService.ajoutCategorieService(this.categorie);
-				 if (categorieRetour != null) {
-					 return "succes";
-				 } else {
-					 return "echec";
-				 }
-			}
-		
+						this.rendu1=true;
+						this.rendu2=false;
 	}
+			
+			
+			public void supprimerCategorie() {
+				
+				System.out.println("test ajoutCatégorie");
+				
+				Categorie categorieRetour = adminService.ajoutCategorieService(this.categorie);
+						this.rendu1=true;
+						this.rendu2=false;
+	}
+			
+			
+			
+			
+			/**
+			 * méthode de modification d'une catégorie
+			 * @return
+			 */
+			
+			public void modifierCategorie() {
+				System.out.println("test modifier");
+				adminService.modifierCategorieService(categorie.getIdCategorie(), categorie.getDescription(), categorie.getNomCategorie());
+				this.rendu1=true;
+				this.rendu2=false;
+			}	
+			
+			
+			
+
+			/**
+			 * Méthode d'affichage de l'ensemble des catégories de la base de données
+			 */
+			
+			public void afficherCategorie() {
+				System.out.println("test afficher la liste des catégories");
+				this.listeCategories = adminService.getAllCategorieService();
+				this.rendu1=false;
+				this.rendu2=true;
+			}
+			
+			
+			/**
+			 * la méthode pour obtenir une catégorie par id:
+			 */
+
+			public void getCategorieById(){
+				this.categorie = adminService.rechercherCategorieParIdService(categorie.getIdCategorie());
+				this.rendu1=false;
+				this.rendu2=true;
+			}
+			
+			
+			
+}
 
 

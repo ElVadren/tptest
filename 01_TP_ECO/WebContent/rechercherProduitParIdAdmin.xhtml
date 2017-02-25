@@ -14,18 +14,22 @@
 
 <h:body>
 
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
 
 	<h:form>
-		<p:inputText value="#{navigationManagedBean.produit.idProduit}" />
+		<p:inputText value="#{amb.produit.idProduit}" />
 		<p:commandButton value="afficher le produit par id"
-			icon="ui-icon-check" action="#{navigationManagedBean.getProduitById}"
+			icon="ui-icon-check" action="#{amb.getProduitById}"
 			update="@all" />
 	</h:form>
 	<br />
 	<p:separator />
 
-	<p:dataTable var="produit" value="#{navigationManagedBean.produit}"
-		id="idtableauresult" rendered="#{navigationManagedBean.rendu}">
+	<p:dataTable var="produit" value="#{amb.produit}"
+		id="idtableauresult">
 
 		<p:column headerText="Id :">
 			<h:outputText value="#{produit.idProduit}" />
@@ -42,10 +46,14 @@
 		<p:column headerText="Quantité :">
 			<h:outputText value="#{produit.quantite}" />
 		</p:column>
-
-
+		
 	</p:dataTable>
 
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
 
 
 </h:body>

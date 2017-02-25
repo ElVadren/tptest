@@ -23,7 +23,7 @@
 <h:outputText value="Nom de catégorie"></h:outputText>
 <h:inputText id="nom_categorie" value="#{amb.categorie.nomCategorie}"></h:inputText>
 
-<h:commandButton action="#{amb.ajoutCategorie}" value="valider"></h:commandButton>
+<h:commandButton action="#{amb.ajoutCategorie}" value="valider" update="@all"></h:commandButton>
 
 </h:form>
 

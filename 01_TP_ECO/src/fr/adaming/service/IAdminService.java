@@ -18,6 +18,11 @@ public interface IAdminService {
  */
 	public Admin isExistAdminService(Admin ad);
 	
+	
+	/**
+	 * Méthodes de gestion des produits
+	 */
+	
 	/**méthode d'ajout de produit par l'admin à la base de données
 	 * 
 	 * @param p
@@ -34,7 +39,26 @@ public interface IAdminService {
 	
 	public List<Produit> getAllProduitService();
 	
+	
+	/**
+	 * Méthode de gestion des catégories
+	 * 	@param c
+	 * @return
+	 */
+	
 	public Categorie ajoutCategorieService(Categorie c);
+
+	public Categorie suppressionCategorieService(long idCategorie);
+
+
+	public Categorie modifierCategorieService(long idCategorie, String description, String nomCategorie);
+
+
+	public List<Categorie> getAllCategorieService();
+
+
+	public Categorie rechercherCategorieParIdService(long idCategorie);
+	
 	
 	
 }

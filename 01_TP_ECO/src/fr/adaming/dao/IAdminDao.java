@@ -26,4 +26,12 @@ public interface IAdminDao {
 
 	public Categorie ajoutCategorieDao(Categorie c);
 
+	public Categorie supprimerCategorieDao(long idCategorie);
+
+	public Categorie modifierCategorieDao(long idCategorie, String description, String nomCategorie);
+
+	public List<Categorie> getAllCategorieDao();
+
+	public Categorie rechercherCategorieParIdDao(long idCategorie);
+
 }

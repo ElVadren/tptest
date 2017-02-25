@@ -63,6 +63,27 @@ public Categorie ajoutCategorieService(Categorie c) {
 	return adminDao.ajoutCategorieDao(c);
 }
 
+@Override
+public Categorie suppressionCategorieService(long idCategorie) {
+
+return adminDao.supprimerCategorieDao(idCategorie);
+}
+
+@Override
+public Categorie modifierCategorieService(long idCategorie, String description, String nomCategorie) {
+	return adminDao.modifierCategorieDao(idCategorie, description, nomCategorie);
+}
+
+@Override
+public List<Categorie> getAllCategorieService() {
+	return adminDao.getAllCategorieDao();
+}
+
+@Override
+public Categorie rechercherCategorieParIdService(long idCategorie) {
+	return adminDao.rechercherCategorieParIdDao(idCategorie);
+}
+
 
 
 

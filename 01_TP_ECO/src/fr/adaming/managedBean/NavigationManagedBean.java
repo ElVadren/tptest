@@ -190,7 +190,7 @@ public Admin getAdmin() {
  */
 	
 	/**
-	 * la méthode pour obtenir la liste des produits par id:
+	 * la méthode pour obtenir un produit par id:
 	 */
 
 	public void getProduitById(){

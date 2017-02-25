@@ -7,7 +7,7 @@
     <welcome-file>accueilGeneral.xhtml</welcome-file>
   </welcome-file-list> -->
      <welcome-file-list>
-    <welcome-file>ajouterCategorieAdmin.xhtml</welcome-file>
+    <welcome-file>rechercherCategorieParIdAdmin.xhtml</welcome-file>
   </welcome-file-list>
   
   <!--  déclaration de la servlet unique -->

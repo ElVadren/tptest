@@ -200,5 +200,87 @@ public class AdminDaoImpl implements IAdminDao {
 		return c;
 
 	}
+
+	@Override
+	public Categorie supprimerCategorieDao(long idCategorie) {
+		String reqSql = "delete from Categorie a where a.idCategorie=:pIdCategorie";
+
+		Query reqQuery = em.createQuery(reqSql);
+
+		reqQuery.setParameter("pIdCategorie", idCategorie);
+
+		System.out.println("test"+ idCategorie);
+		
+		int deleted = reqQuery.executeUpdate ();
+		
+		return null;
+	}
+
+	@Override
+	public Categorie modifierCategorieDao(long idCategorie, String description, String nomCategorie) {
+
+		String reqSql = "update Categorie p set p.nomCategorie=:nomCategorie, p.description=:description  where p.idCategorie=:idCategorie";
+
+		Query reqQuery = em.createQuery(reqSql);
+
+		reqQuery.setParameter("nomCategorie", nomCategorie);
+		reqQuery.setParameter("description", description);
+		reqQuery.setParameter("idCategorie", idCategorie);
+		
+		Categorie categorie = new Categorie(idCategorie, nomCategorie, description);
+		System.out.println(categorie);
+		
+		int updated = reqQuery.executeUpdate();
+		
+		if (categorie!=null){
+			return categorie;
+		}else{
+			return null;
+		}
+	}
+
+	@Override
+	public List<Categorie> getAllCategorieDao() {
+		/**
+		 * requête pour récupérer l'ensemble des catégories de la base de données
+		 */
+		String sql = "SELECT p FROM Categorie p";
+
+		/**exécution de la requête*/
+		Query query = em.createQuery(sql);
+
+		/**
+		 * récupération de la liste des résultats
+		 */
+		List<Categorie> listeCategories = query.getResultList();
+		/** 
+		 * test pour vérifier que la liste n'est pas nulle
+		 */
+		if(listeCategories.size()!=0){
+			return listeCategories;
+		}else{
+			System.out.println("la liste est vide");
+			return null;
+		}
+		
+	}
+
+	@Override
+	public Categorie rechercherCategorieParIdDao(long idCategorie) {
+	
+		String sql = "SELECT p FROM Categorie p WHERE p.idCategorie=:idCategorie ";
+
+		Query query = em.createQuery(sql);
+		query.setParameter("idCategorie", idCategorie);
+
+		Categorie categorie = (Categorie) query.getSingleResult();
+		if (categorie!=null){
+			return categorie;
+		}else{
+			return null;
+		}
+	}
+	
+	
 	
 }
