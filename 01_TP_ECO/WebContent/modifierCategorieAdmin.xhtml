@@ -14,9 +14,15 @@
 
 <body>
 
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
 <h:form>
 
-Modification du categorie d'id spécifié
+
 <h:outputText value="Id de categorie"></h:outputText>
 <h:inputText id="id_categorie" value="#{amb.categorie.idCategorie}"></h:inputText>
 
@@ -31,7 +37,12 @@ Modification du categorie d'id spécifié
 
 </h:form>
 
-
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
+	
 </body>
 
 </html>

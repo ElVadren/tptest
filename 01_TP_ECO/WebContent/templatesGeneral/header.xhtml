@@ -14,16 +14,17 @@
 
 
 	<ui:composition>
-		<h1>Le header de la page !</h1>
+	<h1 style="font-famiy:cambria; font-size:large">Bienvenue sur votre site !</h1>
 
 		<br />
 		<h:form>
 			<p:breadCrumb>
+			<p:menuitem value="Home" url="accueilGeneral.xhtml" />
 				<p:menuitem value="Espace Utilisateur" url="index.xhtml" />
 				<p:menuitem value="Espace Administrateur" url="authentificationAdmin.xhtml" />
 			</p:breadCrumb>
 		</h:form>
-		<!-- <p:separator/> lien pour ajouter à la base de données-->
+		
 
 
 	</ui:composition>

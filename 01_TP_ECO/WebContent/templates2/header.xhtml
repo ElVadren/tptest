@@ -13,21 +13,38 @@
 <h:body>
 	<!--  le header  -->
 	<ui:composition>
-		<h1>Le header de la page !</h1>
+		<h1 style="font-famiy:cambria; font-size:large">Bienvenue sur votre site !</h1>
 
 		<br />
 		<h:form>
 			<p:breadCrumb>
 				<p:menuitem value="Accueil" url="index2.xhtml" />
-				<p:menuitem value="Ajouter un produit" url="ajouterProduit.xhtml" />
-				<p:menuitem value="Modifier un produit" url="modifierProduit.xhtml" />
-				<p:menuitem value="Supprimer un produit" url="supprimerProduit.xhtml" />
-				<p:menuitem value="Rechercher un produit par id" url="rechercherProduitParIdAdmin.xhtml" />
-				<p:menuitem value="Afficher la liste des produits" url="afficherProduitsAdmin.xhtml" />
-				<p:menuitem value="Afficher la liste des produits" url="afficherProduitsAdmin.xhtml" />
+				<p:menuitem value="Ajouter un produit"
+					url="ajouterProduitAdmin.xhtml" />
+				<p:menuitem value="Modifier un produit"
+					url="modifierProduitAdmin.xhtml" />
+				<p:menuitem value="Supprimer un produit"
+					url="supprimerProduitAdmin.xhtml" />
+				<p:menuitem value="Rechercher un produit par id"
+					url="rechercherProduitParIdAdmin.xhtml" />
+				<p:menuitem value="Afficher la liste des produits"
+					url="afficherProduitsAdmin.xhtml" />
+
+
+				<p:menuitem value="Ajouter une catégorie"
+					url="ajouterCategorieAdmin.xhtml" />
+				<p:menuitem value="Modifier une categorie"
+					url="modifierCategorieAdmin.xhtml" />
+				<p:menuitem value="Supprimer une categorie"
+					url="supprimerCategorieAdmin.xhtml" />
+				<p:menuitem value="Rechercher une categorie par id"
+					url="rechercherCategorieParIdAdmin.xhtml" />
+				<p:menuitem value="Afficher la liste des categories"
+					url="afficherCategoriesAdmin.xhtml" />
+
 			</p:breadCrumb>
 		</h:form>
-		<!-- <p:separator/> lien pour ajouter à la base de données-->
+
 
 
 	</ui:composition>

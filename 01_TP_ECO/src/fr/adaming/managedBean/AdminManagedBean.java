@@ -318,6 +318,16 @@ public boolean isRendu1() {
 			
 			
 			
+			/**
+			 * la méthode pour attribuer un compte à une catégorie par id:
+			 */
+
+			public void attribuer(){
+				adminService.attribuerService(produit.getIdProduit(), categorie.getIdCategorie());
+				this.rendu1=false;
+				this.rendu2=true;
+			}
+			
 }
 
 

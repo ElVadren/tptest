@@ -15,6 +15,13 @@
 
 <body>
 
+
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
 <h:form>
 
 <h:outputText value="Description de catégorie"></h:outputText>
@@ -27,6 +34,11 @@
 
 </h:form>
 
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
 
 </body>
 

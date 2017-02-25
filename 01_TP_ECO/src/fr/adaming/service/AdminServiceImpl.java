@@ -84,6 +84,11 @@ public Categorie rechercherCategorieParIdService(long idCategorie) {
 	return adminDao.rechercherCategorieParIdDao(idCategorie);
 }
 
+@Override
+public void attribuerService(long idProduit, long idCategorie) {
+	adminDao.attribuerDao(idProduit, idCategorie);
+}
+
 
 
 

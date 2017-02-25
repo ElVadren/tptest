@@ -58,6 +58,9 @@ public interface IAdminService {
 
 
 	public Categorie rechercherCategorieParIdService(long idCategorie);
+
+
+	public void attribuerService(long idProduit, long idCategorie);
 	
 	
 	

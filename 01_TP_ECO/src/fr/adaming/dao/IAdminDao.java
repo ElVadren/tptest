@@ -34,4 +34,6 @@ public interface IAdminDao {
 
 	public Categorie rechercherCategorieParIdDao(long idCategorie);
 
+	public Object attribuerDao(long idProduit, long idCategorie);
+
 }

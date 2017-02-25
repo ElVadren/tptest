@@ -13,6 +13,12 @@
 
 <h:body>
 
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
 	<h:form>
 		<p:inputText value="#{amb.categorie.idCategorie}" />
 		<p:commandButton value="supprimer la categorie par id"
@@ -20,6 +26,12 @@
 				update="@all" />
 
 	</h:form>
+
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
 
 </h:body>
 

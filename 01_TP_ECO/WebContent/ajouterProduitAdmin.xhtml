@@ -15,6 +15,13 @@
 
 <body>
 
+
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
 <h:form>
 
 <h:outputText value="Description de produit"></h:outputText>
@@ -26,10 +33,19 @@
 <h:outputText value="Prix de produit"></h:outputText>
 <h:inputText id="prix_produit" value="#{amb.produit.prix}"></h:inputText>
 
+<h:outputText value="Quantité de produit"></h:outputText>
+<h:inputText id="quantite_produit" value="#{amb.produit.quantite}"></h:inputText>
+
+
 <h:commandButton action="#{amb.ajoutProduit}" value="valider"></h:commandButton>
 
 </h:form>
 
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
 
 </body>
 

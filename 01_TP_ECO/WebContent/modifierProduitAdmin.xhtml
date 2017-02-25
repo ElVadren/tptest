@@ -14,9 +14,15 @@
 
 <body>
 
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
 <h:form>
 
-Modification du produit d'id spécifié
+
 <h:outputText value="Id de produit"></h:outputText>
 <h:inputText id="id_produit" value="#{amb.produit.idProduit}"></h:inputText>
 
@@ -33,6 +39,11 @@ Modification du produit d'id spécifié
 
 </h:form>
 
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
 
 </body>
 

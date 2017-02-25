@@ -280,6 +280,25 @@ public class AdminDaoImpl implements IAdminDao {
 			return null;
 		}
 	}
+
+	@Override
+	public Object attribuerDao(long idProduit, long idCategorie) {
+
+		String reqSql = "update Produit p set p.categorie=:categorie where p.idProduit=:idProduit";
+		
+		Categorie categorie = new Categorie();
+		categorie.setIdCategorie(idCategorie);
+		
+		Query reqQuery = em.createQuery(reqSql);
+		
+		reqQuery.setParameter("categorie", categorie);
+		reqQuery.setParameter("idProduit", idProduit);
+		
+		int updated = reqQuery.executeUpdate();
+		
+		return null;
+		
+	}
 	
 	
 	

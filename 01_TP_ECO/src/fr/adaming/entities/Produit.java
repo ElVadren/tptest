@@ -50,6 +50,8 @@ public class Produit implements Serializable {
 	@JoinColumn(name="categorie_id_fk", referencedColumnName="id_categorie")
 	private Categorie categorie;
 	
+	private long idCategorie;
+	
 	
 //---------- d√©claration des constructeurs :
 	
@@ -64,9 +66,19 @@ public class Produit implements Serializable {
 		this.designation = designation;
 		this.description = description;
 		this.prix = prix;
-		
 	}
 
+	//constructeur avec designation, description, prix, quantitÈ (pour ajout dans la base de donnÈes)
+	public Produit(String designation, String description, double prix, int quantite, long idCategorie) {
+		super();
+		this.designation = designation;
+		this.description = description;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.idCategorie=categorie.getIdCategorie();
+	}
+
+	
 	//constructeur complet
 	public Produit(long idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne) {
@@ -151,14 +163,21 @@ public Produit(long idProduit, String designation, String description, double pr
 		this.categorie = categorie;
 	}
 	
+	
+	public long getIdCategorie() {
+		return idCategorie;
+	}
+
+	public void setIdCategorie(long idCategorie) {
+		this.idCategorie = idCategorie;
+	}
 
 
-	
-//------------les m√©thodes :
-	
-	//m√©thode toString qui affiche Id, designation, description, prix
-	
 
+
+/**
+ * MÈthode toString qui affiche Id, designation, description, prix
+ */
 
 
 
