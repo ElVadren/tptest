@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<h:head>
+	<title></title>
+</h:head>
+
+<h:body>
+
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+
+	<h:form>
+		<p:inputText value="#{amb.categorie.idCategorie}" />
+		<p:commandButton value="afficher le categorie par id"
+			icon="ui-icon-check" action="#{amb.getCategorieById}"
+			update="@all" />
+	</h:form>
+	<br />
+	<p:separator />
+
+	<p:dataTable var="categorie" value="#{amb.categorie}"
+		id="idtableauresult">
+
+		<p:column headerText="Id :">
+			<h:outputText value="#{categorie.idCategorie}" />
+		</p:column>
+		<p:column headerText="Description :">
+			<h:outputText value="#{categorie.description}" />
+		</p:column>
+		<p:column headerText="Nom:">
+			<h:outputText value="#{categorie.nomCategorie}" />
+		</p:column>
+		
+	</p:dataTable>
+
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
+
+
+</h:body>
+
+</html>

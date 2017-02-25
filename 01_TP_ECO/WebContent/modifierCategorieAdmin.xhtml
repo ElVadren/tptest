@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<head>
+<title>Formulaire de modification de categorie par l'administrateur dans la base de données
+</title>
+</head>
+
+<body>
+
+<h:form>
+
+Modification du categorie d'id spécifié
+<h:outputText value="Id de categorie"></h:outputText>
+<h:inputText id="id_categorie" value="#{amb.categorie.idCategorie}"></h:inputText>
+
+<h:outputText value="Description de categorie"></h:outputText>
+<h:inputText id="description_categorie" value="#{amb.categorie.description}"></h:inputText>
+
+<h:outputText value="Designation de categorie"></h:outputText>
+<h:inputText id="designation_categorie" value="#{amb.categorie.nomCategorie}"></h:inputText>
+
+
+<h:commandButton action="#{amb.modifierCategorie}" value="valider" update="@all"/>
+
+</h:form>
+
+
+</body>
+
+</html>
