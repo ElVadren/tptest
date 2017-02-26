@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import fr.adaming.entities.Admin;
 import fr.adaming.entities.Categorie;
@@ -214,6 +216,8 @@ public boolean isRendu1() {
 			
 			Produit produitRetour = adminService.ajoutProduitService(this.produit);
 			 if (produitRetour != null) {
+//				  FacesMessage message = new FacesMessage( "Succès de l'ajout !" );
+//			        FacesContext.getCurrentInstance().addMessage( null, message );
 				 return "succes";
 			 } else {
 				 return "echec";
