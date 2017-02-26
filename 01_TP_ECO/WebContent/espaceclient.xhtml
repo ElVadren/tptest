@@ -21,17 +21,12 @@
 		<div style="margin-left: 150px; margin-right: 150px">
 				<p:dataTable id="listeP" var="liste"
 					value="#{clientManagedBean.listeCommande}">
-					<p:column headerText="Numéro :">
-						<div style="font-weight: bold;">
+					<p:column style="width:100px" headerText="Numéro :">
 							<h:outputText value="#{liste.idCommande}" />
-						</div>
-						<br />
-						<div style="font-style: italic">
-							<h:outputText value="#{liste.description}" />
-						</div>
+					
 					</p:column>
 
-					<p:column style="width:175px" headerText="Date :">
+					<p:column style="width:300px" headerText="Date :">
 
 						<h:outputText value="#{liste.dateCommande}" />
 					</p:column>

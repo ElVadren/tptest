@@ -1,8 +1,9 @@
 package fr.adaming.dao;
 
-import java.sql.Date;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -131,7 +132,7 @@ public class ClientDaoImpl implements IClientDao {
 
 	/**
 	 * La méthode débute par la création d'une nouvelle commande :
-	 * On lui attribut le client.
+	 * On lui attribut le client ainsi que la date
 	 * Il faut ensuite enregistrer la liste dans la base de donnée 
 	 */
 	@Override
@@ -149,6 +150,10 @@ public class ClientDaoImpl implements IClientDao {
 			listeC.add(produitc);
 		}
 		panier.setListProduit(listeC);
+	
+		Date date = new Date();
+		System.out.println(date);
+		commande.setDateCommande(date);
 		commande.setPanier(panier);
 	
 		em.persist(commande);
