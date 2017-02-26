@@ -1,31 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<faces-config
-    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
-    version="2.2">
+<faces-config xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
+	version="2.2">
 
-<navigation-rule>
+	<navigation-rule>
 		<from-view-id>/authentificationAdmin.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>succes</from-outcome>
 			<to-view-id>/index2.xhtml</to-view-id>
 		</navigation-case>
-		
+
 		<navigation-case>
 			<from-outcome>echec</from-outcome>
 			<to-view-id>/authentificationAdmin.xhtml</to-view-id>
 		</navigation-case>
-</navigation-rule>
+	</navigation-rule>
 
 
 	<navigation-rule>
 		<from-view-id>/*.xhtml</from-view-id>
 		<navigation-case>
-			<from-outcome>validercommande</from-outcome>
-			<to-view-id>/index.xhtml</to-view-id>
+			<from-action>#{navigationManagedBean.listeCat}</from-action>
+			<from-outcome>ok</from-outcome>
+			<to-view-id>/affichercategories.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
+
+
+
 
 </faces-config>

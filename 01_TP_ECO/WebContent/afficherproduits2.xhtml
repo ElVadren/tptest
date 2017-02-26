@@ -15,30 +15,55 @@
 	<ui:composition template="/templates/layout.xhtml">
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
-<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+	<br/><br/>
 	
 <h:form>
-		<p:inputText value="#{navigationManagedBean.saisie}" id="saisie" > <p:ajax event="keyup" update="liste1" listener="#{navigationManagedBean.listeMot}" immediate="true" /></p:inputText>
-		
-	</h:form>
+<h:outputText  value="Vous cherchez un produit en particulier ? "/>
+<p:inputText value="#{navigationManagedBean.saisie}" id="saisie" > <p:ajax event="keyup" update="liste1" listener="#{navigationManagedBean.listeMot}" immediate="true" /></p:inputText>	
+</h:form>
 		<br/>
 		<p:separator/>
 		<p:outputPanel id="liste1">
-		<p:dataTable  var="liste" value="#{navigationManagedBean.listeProduit}" rendered="#{navigationManagedBean.rendu}">
-		
-    <p:column headerText="Id :">
-        <h:outputText value="#{liste.idProduit}" />
-    </p:column>
- <p:column headerText="Designation :">
-        <h:outputText value="#{liste.designation}" />
-    </p:column>
- <p:column headerText="Description :">
-        <h:outputText value="#{liste.description}" />
-    </p:column>
- <p:column headerText="Prix :">
-        <h:outputText value="#{liste.prix}" />
-    </p:column>
-</p:dataTable>
+			<div style="margin-left: 150px; margin-right: 150px">
+	<p:dataTable var="liste" value="#{navigationManagedBean.listeProduit}" id="idtableauresult" rendered="#{navigationManagedBean.rendu}">
+	
+					<p:column headerText="Designation :">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.designation}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+					
+					<p:column style="width:100px;align:center" headerText="Prix (€) :">
+							<h:outputText value="#{liste.prix}" />
+					</p:column>
+					
+					<p:column style="width:250px" headerText="Achat">
+					
+						<h:form>
+							<h:outputLabel for="basic" value="Quantité : " />
+							<p:spinner id="basic"
+								value="#{clientManagedBean.produit.quantite}" />
+							<div style="align: center">
+								<p:commandButton value="Ajouter au  panier" icon="ui-icon-check"
+									action="#{clientManagedBean.ajoutPanier}" actionListener="#{navigationManagedBean.panierMessage}" update="@all">
+									<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+									<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
+									<f:setPropertyActionListener value="#{liste.idProduit}"
+										target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
+								</p:commandButton>
+							</div>
+						</h:form>
+						
+					</p:column>
+
+
+				</p:dataTable>
+	</div>
+	
 	</p:outputPanel>
 	<!-- fin de la zone d'edition -->
 			

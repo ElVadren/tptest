@@ -13,22 +13,31 @@
 <h:body>
 	<!--  le header  -->
 	<ui:composition>
-	<h1 style="font-famiy:cambria; font-size:large">Bienvenue sur votre site !</h1>>
-	
-	<br/>
-	<h:form>
-<p:breadCrumb>
-    <p:menuitem value="Accueil" url="accueilGeneral.xhtml" />
-    <p:menuitem value="Chercher un produit" url="afficherproduits2.xhtml" />
-    <p:menuitem value="Chercher produit par catégorie" url="afficherproduits.xhtml" />
-    <p:menuitem value="Afficher les catégories" url="affichercategories.xhtml" />
-    <p:menuitem value="Afficher votre panier" url="afficherpanier.xhtml" />
-</p:breadCrumb>
-	</h:form>
+		<h1 style="font-famiy: cambria; font-size: large">Bienvenue sur
+			votre site !</h1>
+
+		<br />
+
+		<h:form>
+			<p:growl id="menu" />
+
+			<p:menubar>
+				<p:menuitem value="Accueil" action="#{navigation2ManagedBean.accueil}" icon="ui-icon-home" />
+				<p:menuitem value="Rechercher un produit"
+					url="afficherproduits2.xhtml" />
+				<p:menuitem value="Afficher les catégories"
+					action="#{navigation2ManagedBean.listeCat}" />
+				<p:menuitem value="Votre panier" url="afficherpanier.xhtml" />
+				<p:menuitem value="Espace client" action="#{clientManagedBean.espaceClient}" />
+
+
+			</p:menubar>
+		</h:form>
 
 
 
-</ui:composition>
+
+	</ui:composition>
 </h:body>
 
 </html>

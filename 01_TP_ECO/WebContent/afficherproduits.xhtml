@@ -6,57 +6,57 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	
 </h:head>
 
 
 <h:body>
-<!--  Chargement du template de la page -->
 	<ui:composition template="/templates/layout.xhtml">
-		<!--  redéfinition du corps -->
 		<ui:define name="corps">
-<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
-	<h:form>
-		<p:inputText value="#{navigationManagedBean.categorie.idCategorie}" />
-		 <p:commandButton value="afficher la liste des produits" icon="ui-icon-check" action="#{navigationManagedBean.listePro}" update="@all"/>
-	</h:form>
-		<br/>
-		<p:separator/>
-	
-		<p:dataTable  var="liste" value="#{navigationManagedBean.listeProduit}" id="idtableauresult" rendered="#{navigationManagedBean.rendu}">
-		  
-   <p:column headerText="Id :">
-        <h:outputText value="#{liste.idProduit}" />
-    </p:column>
- <p:column headerText="Designation :">
-        <h:outputText value="#{liste.designation}" />
-    </p:column>
- <p:column headerText="Description :">
-        <h:outputText value="#{liste.description}" />
-    </p:column>
- <p:column headerText="Prix :">
-        <h:outputText value="#{liste.prix}" />
-    </p:column>
-  <p:column headerText="Achat"> 
-  <h:form>
-    <h:inputText value="#{clientManagedBean.produit.quantite}" />
-		 <p:commandButton value="Ajout panier" icon="ui-icon-check" action="#{clientManagedBean.ajoutPanier}" >
-		<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
-		<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
-		<f:setPropertyActionListener value="#{liste.idProduit}" target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
-		 </p:commandButton>
-	</h:form>
-  </p:column>
-  
-</p:dataTable>
+			<br />
+			<h3>Liste des produits de la catégorie : #{NavigationManagedBean.nomCategorie}</h3>
+			<br />
+			<p:separator />
+			<div style="margin-left: 150px; margin-right: 150px">
+				<p:dataTable var="liste"
+					value="#{navigation2ManagedBean.listeProduit}" id="idtableauresult">
+					<p:column headerText="Designation :">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.designation}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+					<p:column style="width:100px;align:center" headerText="Prix (€) :">
+							<h:outputText value="#{liste.prix}" />
+					</p:column>
+					<p:column style="width:250px" headerText="Achat">
+						<h:form>
+							<h:outputLabel for="basic" value="Quantité : " />
+							<p:spinner id="basic"
+								value="#{clientManagedBean.produit.quantite}" />
+							<div style="align: center">
+								<p:commandButton value="Ajouter au  panier" icon="ui-icon-check"
+									action="#{clientManagedBean.ajoutPanier}" actionListener="#{navigationManagedBean.panierMessage}" update="@all">
+									<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+									<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
+									<f:setPropertyActionListener value="#{liste.idProduit}"
+										target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
+								</p:commandButton>
+							</div>
+						</h:form>
+					</p:column>
 
-	<!-- fin de la zone d'edition -->
-			
+				</p:dataTable>
+
+			</div>
+
 		</ui:define>
-		
-	</ui:composition>	
+
+	</ui:composition>
 
 
-	
+
 </h:body>
 </html>

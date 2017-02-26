@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	
+</h:head>
+
+
+<h:body>
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<div align="left">
+<H4>Bonjour #{clientManagedBean.client.nomClient}, voici vos commandes passées :</H4>
+</div>
+		<div style="margin-left: 150px; margin-right: 150px">
+				<p:dataTable id="listeP" var="liste"
+					value="#{clientManagedBean.listeCommande}">
+					<p:column headerText="Numéro :">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.idCommande}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+
+					<p:column style="width:175px" headerText="Date :">
+
+						<h:outputText value="#{liste.dateCommande}" />
+					</p:column>
+
+					<p:column style="width:150px">
+						<h:form>
+							<p:commandButton value="Voir le détail"
+								action="#" update="@all">
+								<!--  avec un listener, récupérer le produit -->
+								<f:setPropertyActionListener value="#{liste}"
+									target="#{clientManagedBean.produit}"></f:setPropertyActionListener>
+							</p:commandButton>
+						</h:form>
+					</p:column>
+				</p:dataTable>
+
+			</div>
+
+	
+	<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
+
+
+	
+</h:body>
+</html>

@@ -14,6 +14,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Commande;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IClientService;
 
@@ -32,6 +33,8 @@ public class ClientManagedBean implements Serializable {
 	private Produit produit;
 	private boolean rendu1=false;
 	private boolean rendu2=true;
+	private boolean connexion=false;
+	private List<Commande> listeCommande;
 	
 //instanciation des EJB pour les méthodes
 	@EJB
@@ -87,8 +90,29 @@ public class ClientManagedBean implements Serializable {
 		this.rendu2 = rendu2;
 	}
 	
+
+public boolean isConnexion() {
+		return connexion;
+	}
+
+	public void setConnexion(boolean connexion) {
+		this.connexion = connexion;
+	}
+	
+	
+	public List<Commande> getListeCommande() {
+		return listeCommande;
+	}
+
+	public void setListeCommande(List<Commande> listeCommande) {
+		this.listeCommande = listeCommande;
+	}
+
+	
 //les methodes --------------------------;
 	
+
+
 
 
 /**
@@ -112,6 +136,7 @@ public class ClientManagedBean implements Serializable {
 	this.listePanier.add(produitadd);
 	this.rendu1=true;
 	this.rendu2=false;
+	this.produit.setQuantite(1);
 	}
 	
 	/**
@@ -138,17 +163,88 @@ public class ClientManagedBean implements Serializable {
 	
 
 	/**
-	 * méthode pour l'enregistrement d'un nouveau client
-	 * Cette méthode est uniquement disponible quand il y a des elements dans un panier 
-	 * et quand la commande va être passée
+	 * Cette méthode est utilisée pour la validation de la commande. 
+	 * Elle se déroule en plusieurs étapes : 
+	 * - Si le client c'est déjà identifié dans l'espace, il est detecté via la session -> le client est directement dirigé vers la page finale
+	 * - Si l'utilisateur n'est pas identifié, on l'amène vers une page proposant de créer un compte ou de s'identifier
 	 */
+	
+	public String validerCommande(){
+		/**
+		 * Il ya deux vérification :
+		 * - on vérifie s'il y a déjà un nom et un mail dans la session 
+		 * - on vérifie ensuite s'ils existent déjà dans la bdd
+		 */
+				if (this.client.getNomClient() != null) {
+					this.client = clientService.isExistService(client);
+					if(this.client!=null){
+					return "confirmationcommande";
+					}
+					else {
+						return "identification";
+					}
+				} else {
+					return "identification";
+				}
+	}
+	
 	public String enregistrementClient(){
 		clientService.enregistrementClientService(client);
-		return "validercommande";
+		return "confirmationcommande";
 	}
 	
-	public void savePanier(){
-		clientService.enregistrementCommandeService(client, listePanier);
+	
+	/**
+	 * 
+	 * C'est la methode utilisée pour l'envois de la commande.
+	 * Pour éviter tout soucis, on reverifie ici que le client est bien enregistré en session de manière à éviter une commande lié à un 
+	 * client nul.
+	 * On verifie également que le panier n'est pas vide.
+	 * A la fin de la commande, le panier est vidé et le client redirigé vers une page de confirmation
+	 */
+	public String confirmerCommande(){
+		if (this.client.getNomClient() != null) {
+			this.client = clientService.isExistService(client);
+			if(this.client!=null && this.listePanier.size()>0){
+				clientService.enregistrementCommandeService(client, listePanier);
+				this.listePanier.clear();
+				return "commandeconfirme";
+			}
+			return "commandeechec";
+			}
+		return "commandeechec";
 	}
 	
+	/**
+	 * 
+	 * Cette méthode permet l'identification d'un Client existant au moment de passer commande
+	 * Elle vérifie que celui-ci existe bien, sinon elle recharge la page en affichant un message d'erreur
+	 */
+	public String identificationClient(){
+		Client cr= clientService.isExistService(client);
+		if(cr!=null){
+			this.connexion=false;
+			return "confirmationcommande";
+		}else{
+		this.connexion=true;
+		return "connexionclient";
+		}
+	}
+	
+	/**
+	 * Cette méthode permet la navigation vers l'espace client, qui permet a un client existant de voir un aperçu de ses commandes.
+	 *  La méthode verifie si le client existe, sinon elle le renvois vers la page de connexion. 
+	 *  Elle charge également la liste des commandes effectuées.
+	 */
+	public String espaceClient(){
+		Client cr= clientService.isExistService(client);
+		if(cr!=null){
+			this.listeCommande=clientService.getCommandeByClientService(client);
+			this.connexion=false;
+			return "espaceclient";
+		}else{
+		this.connexion=true;
+		return "identificationclient";
+		}
+	}
 }

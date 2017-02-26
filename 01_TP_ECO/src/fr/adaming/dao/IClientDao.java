@@ -13,6 +13,7 @@ import javax.ejb.Local;
 
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Commande;
 import fr.adaming.entities.Produit;
 
 @Local
@@ -46,6 +47,19 @@ public interface IClientDao {
 	
 	public void enregistrementCommande (Client client, List<Produit> listeProduit);
 	
-	//méthode à supprimer à la fin 
-	public void remplirbdd();
+	/**
+	 * methode pour récupérer tous les produits :
+	 */
+	public List<Produit> getAllProduits();
+	
+
+	/**
+	 * methode pour vérifier si le client existe :
+	 */
+	public Client isExist(Client client);
+	
+	/**
+	 * methode pour récupérer toutes les commandes d'un client :
+	 */
+	public List<Commande> getCommandeByClient (Client client);
 }

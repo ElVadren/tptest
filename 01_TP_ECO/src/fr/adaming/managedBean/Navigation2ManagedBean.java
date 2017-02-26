@@ -1,8 +1,6 @@
 /**
- * ManagedBean de navigation qui permet l'appel et l'affichage de :
- * - consulter la liste des catégories
- * - consulter la liste des produits selon la catégorie 
- * - rechercher un produit via mot clés 
+ *ManagedBean destine a la navigation client parametre en Session de maniere a pouvoir utiliser
+ *des affichages differents
  */
 
 package fr.adaming.managedBean;
@@ -11,29 +9,20 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
+import javax.faces.bean.SessionScoped;
 
-
-import fr.adaming.entities.Admin;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
 import fr.adaming.service.IClientService;
 
-/** 
- * 
- * Déclaration du ManagedBean en ViewScopped : 
- * Résultat hors session, uniquement à l'affichage de la page pour ces résultats
- *
- */
+
 @ManagedBean
-@ViewScoped
-public class NavigationManagedBean implements Serializable{
+@SessionScoped
+public class Navigation2ManagedBean implements Serializable{
 
 
 
@@ -44,14 +33,12 @@ public class NavigationManagedBean implements Serializable{
  */
 	private static final long serialVersionUID = 1L;
 	private Client client;
-	private Admin admin;
 	private boolean rendu;
 	private List<Categorie> listeCategorie;
 	private List<Produit> listeProduit;
 	private Categorie categorie;
 	private Produit produit;
-	private String saisie;
-	private String message;
+
 
 
 /**
@@ -66,9 +53,8 @@ public class NavigationManagedBean implements Serializable{
 /**
  * les constructeurs :	
  */
-public NavigationManagedBean() {
+public Navigation2ManagedBean() {
 	this.client = new Client();
-	this.admin = new Admin();
 	this.produit = new Produit();
 	this.categorie = new Categorie();
 }
@@ -112,25 +98,6 @@ public List<Produit> getListeProduit() {
 	}
 	
 	
-public String getSaisie() {
-		return saisie;
-	}
-
-	public void setSaisie(String saisie) {
-		this.saisie = saisie;
-	}
-	
-	
-	
-
-
-public Admin getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
 
 	public Produit getProduit() {
 		return produit;
@@ -149,14 +116,6 @@ public Admin getAdmin() {
 		this.categorie = categorie;
 	}
 	
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 
 	/**
 	 * Déclaration des méthodes :
@@ -166,58 +125,31 @@ public Admin getAdmin() {
 	/**
 	 * méthode de l'espace utilisateur
 	 */
+	/**
+	 * la methode pour obtenir la liste des catégorie
+	 */
+	public String listeCat(){
+		this.listeCategorie = clientService.getAllCategorieService();
+		return "affichercategories";
+	}
 
 	/**
 	 * la méthode pour obtenir la liste des produits par catégorie :
 	 * La deuxième utilise une méthode de navigation à partir de la page d'afficage des différentes catégories
 	 */
-	public void listePro(){
+
+	
+	public String listeProNav(){
 		this.listeProduit = clientService.getProduitsByCategorieService(categorie);
-		this.rendu = true;	
-	}
-	
-	
-	
-	/**la methode pour obtenir la liste des produits par mot clés :
-	 * Via ajax, les résultats sont rafraichis en direct à la saisie.
-	 * 
-	 */
-	public void listeMot(){
 		
-		this.listeProduit = clientService.getProduitsByMotService(saisie);
-		this.rendu=true;
+		return "afficherproduits";
+	}
+	
+	public String accueil(){	
+		this.listeProduit = clientService.getAllProduitsService();
 		
+		return "index";
 	}
 	
-	
-	
-	
-	/**
-	 * méthode qui affiche un message de confirmation lors de l'ajout d'un produit au panier :
-	 */
-	
-	  public void panierMessage() {
-	        FacesContext context = FacesContext.getCurrentInstance();
-	         
-	        context.addMessage(null, new FacesMessage("Le produit a bien été ajouté au panier !"));
-	  
-	    }
 
-	
-/**
- * méthodes de l'espace admin
- */
-	
-	/**
-	 * la méthode pour obtenir un produit par id:
-	 */
-
-	public void getProduitById(){
-		this.produit = adminService.rechercherProduitParIdService(produit.getIdProduit());
-		this.rendu = true;
-	}
-	
-	
-
-	
 }

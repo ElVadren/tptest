@@ -15,42 +15,31 @@
 	<ui:composition template="/templates/layout.xhtml">
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
-<!-- Formulaire d'enregistrement d'un nouveau client -->
-<br/><br/>
-<h4>Veuillez créer un compte avant de confirmer votre commande :</h4>
-
 <h:form>  
     <p:growl id="growl" />
  
-    <p:panel id="pnl" header="Nouveau client :" style="margin-top:10px">
+    <p:panel id="pnl" header="Identification :" style="margin-top:10px">
         <p:messages id="messages" />
         <h:panelGrid columns="4" id="grid" cellpadding="5">
         	<!-- Demande du nom -->
             <p:outputLabel for="nomClient" value="Nom :" />
             <p:inputText id="nomClient" value="#{clientManagedBean.client.nomClient}" required="true"/>      
-            <p:message for="nomClient" />
-			 <!-- demande de l'adresse -->
- 			  <p:outputLabel for="adresseClient" value="Adresse :" />
-            <p:inputText id="adresseClient" value="#{clientManagedBean.client.adresse}" required="true"/>      
-            <p:message for="adresseClient" />
+            <p:message for="nomClient" />	
              <!-- demande du mail -->
  			  <p:outputLabel for="mailClient" value="Mail :" />
             <p:inputText id="mailClient" value="#{clientManagedBean.client.email}" required="true"/>      
             <p:message for="mailClient" />
-            <!-- demande du téléphone -->
- 			  <p:outputLabel for="telephoneClient" value="Téléphone :" />
-            <p:inputText id="telephoneClient" value="#{clientManagedBean.client.tel}" required="true"/>      
-            <p:message for="telephoneClient" />
+           
             
         </h:panelGrid>
  
-       <p:commandButton value="S'enregistrer"  action="#{clientManagedBean.enregistrementClient}"  />
+       <p:commandButton value="S'enregistrer"  action="#{clientManagedBean.espaceClient}" update="@all" />
     </p:panel>
  
    
-</h:form>
-
-	
+</h:form>	
+<br/><br/>
+<h:outputText value="Nous n'avons pas réussi à vous identifier" rendered="#{clientManagedBean.connexion}"/>	
 	<!-- fin de la zone d'edition -->
 			
 		</ui:define>

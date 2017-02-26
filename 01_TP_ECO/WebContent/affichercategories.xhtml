@@ -6,46 +6,62 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:head>
-	
+
 </h:head>
 
 
 <h:body>
-<!--  Chargement du template de la page -->
+	<!--  Chargement du template de la page -->
 	<ui:composition template="/templates/layout.xhtml">
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
-<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 
-<!-- formulaire d'affichage de la liste des catégories : paramètres idCategorie, nomCategorie, description -->
+			<br />
+			<p:separator />
+			<div style="margin-left: 150px; margin-right: 150px">
+				<p:dataTable var="liste"
+					value="#{navigation2ManagedBean.listeCategorie}"
+					id="idtableauresult">
 
-	<h:form>
-		 <p:commandButton value="afficher la liste des catégories" icon="ui-icon-check" action="#{navigationManagedBean.listeCat}" update="@all"/>
-	</h:form>
-		<br/>
-		<p:separator/>
-		<p:dataTable var="liste" value="#{navigationManagedBean.listeCategorie}" rendered="#{navigationManagedBean.rendu}">
-		
-    <p:column headerText="Id :">
-        <h:outputText value="#{liste.idCategorie}" />
-    </p:column>
- <p:column headerText="Nom :">
-        <h:outputText value="#{liste.nomCategorie}" />
-    </p:column>
- <p:column headerText="Description :">
-        <h:outputText value="#{liste.description}" />
-    </p:column>
+					<p:column style="width:100px">
+						<h:outputText value="#{liste.idCategorie}" />
+					</p:column>
 
-</p:dataTable>
 
-	
-	<!-- fin de la zone d'edition -->
-			
+					<p:column headerText="Catégorie:">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.nomCategorie}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+
+			<p:column style="width:200px">
+						<h:form>
+							
+								<p:commandButton value="Voir les produits" 
+									action="#{navigation2ManagedBean.listeProNav}" >
+									<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+									<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
+									<f:setPropertyActionListener value="#{liste.idCategorie}"
+										target="#{navigation2ManagedBean.categorie.idCategorie}"></f:setPropertyActionListener>
+								</p:commandButton>
+							
+						</h:form>
+					</p:column>
+
+				</p:dataTable>
+
+			</div>
+
+
 		</ui:define>
-		
-	</ui:composition>	
+
+	</ui:composition>
 
 
-	
+
 </h:body>
 </html>

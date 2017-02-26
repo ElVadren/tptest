@@ -15,13 +15,59 @@
 	<ui:composition template="/templates/layout.xhtml">
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
-<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+<br/>
+<div id="haut">
+<h3>Bienvenue dans votre magasin ! </h3>
+<h:outputText value="Vous trouverez ci-dessous une liste de nos produits. Vous pouvez également affiner votre recherche à l'aide des options proposées dans le menu ci-dessus."/>
+</div>
+<br />
+			<p:separator />
+		<p:outputPanel id="listeproduit">
+			<div style="margin-left: 150px; margin-right: 150px">
+	<p:dataTable var="liste" value="#{navigation2ManagedBean.listeProduit}" id="idtableauresult">
 	
-<h:form>
-		 <p:commandButton value="REMPLIR LA BASE DE DONNES AVEC PLEINS DE TRUCS" icon="ui-icon-check" action="#{navigationManagedBean.remplir}"/>
-	</h:form>
+					<p:column headerText="Designation :">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.designation}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+					
+					<p:column style="width:100px;align:center" headerText="Prix (€) :">
+							<h:outputText value="#{liste.prix}" />
+					</p:column>
+					
+					<p:column style="width:250px" headerText="Achat">
+					
+						<h:form>
+							<h:outputLabel for="basic" value="Quantité : " />
+							<p:spinner id="basic"
+								value="#{clientManagedBean.produit.quantite}" />
+							<div style="align: center">
+								<p:commandButton value="Ajouter au  panier" icon="ui-icon-check"
+									action="#{clientManagedBean.ajoutPanier}" actionListener="#{navigationManagedBean.panierMessage}" update="@all">
+									<!--  avec un listener, récupérer le champ correspondant à l'id du produit pour le réutiliser et ajouter le produit au panier -->
+									<!--  cet id servira à récupérer le produit concerné dans la base de donnée -->
+									<f:setPropertyActionListener value="#{liste.idProduit}"
+										target="#{clientManagedBean.produit.idProduit}"></f:setPropertyActionListener>
+								</p:commandButton>
+							</div>
+						</h:form>
+						
+					</p:column>
+
+
+				</p:dataTable>
+	</div>
 	
-	<!-- fin de la zone d'edition -->
+	</p:outputPanel>
+<p:separator />		
+			<br/>
+	<a href="#haut">Revenir en haut de la page</a>	
+		
 			
 		</ui:define>
 		

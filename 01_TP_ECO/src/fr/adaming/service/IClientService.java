@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Commande;
 import fr.adaming.entities.Produit;
 
 @Local
@@ -18,7 +19,7 @@ public interface IClientService {
 	public Produit getProduitByIdService (long id);
 	public void enregistrementClientService (Client client);
 	public void enregistrementCommandeService (Client client, List<Produit> listeProduit);
-	//méthode à supprimer à la fin 
-		public void remplirbddService();
-	
+	public List<Produit> getAllProduitsService();
+	public Client isExistService(Client client);
+	public List<Commande> getCommandeByClientService (Client client);
 }

@@ -8,6 +8,7 @@ import javax.ejb.Stateless;
 import fr.adaming.dao.IClientDao;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
+import fr.adaming.entities.Commande;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -55,16 +56,35 @@ public class ClientServiceImpl implements IClientService {
 		return clientDao.getProduitById(id);
 	}
 	
-//methode à supprimer a la fin
-	@Override
-	public void remplirbddService() {
-		clientDao.remplirbdd();
-		
-	}
+
 
 	@Override
 	public void enregistrementCommandeService(Client client, List<Produit> listeProduit) {
 		clientDao.enregistrementCommande(client, listeProduit);
+	}
+
+	/**
+	 * Methode pour obtenir la liste complète des produits
+	 */
+	@Override
+	public List<Produit> getAllProduitsService() {
+		return clientDao.getAllProduits();
+	}
+
+	/**
+	 * Methode pour vérifier l'existence d'un client
+	 */
+	@Override
+	public Client isExistService(Client client) {
+		return clientDao.isExist(client);
+	}
+
+	/**
+	 * Cette methode permet d'obtenir la liste des commandes d'un client
+	 */
+	@Override
+	public List<Commande> getCommandeByClientService(Client client) {
+		return clientDao.getCommandeByClient(client);
 	}
 
 
