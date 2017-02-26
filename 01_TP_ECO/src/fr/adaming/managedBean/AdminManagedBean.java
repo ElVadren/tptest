@@ -14,25 +14,38 @@ import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
 
 
-//Définition jsf du managedBean
+/**
+ * Définition jsf du managedBean
+ * @author inti0277
+ *
+ */
 @ManagedBean(name="amb")
 @ViewScoped
 public class AdminManagedBean implements Serializable {
 
-	//pour récupérer les info depuis la vue :
+	/**
+	 * pour récupérer les info depuis la vue :
+	 */
 	private Admin admin;
-	//faire le lien avec le service, annotation avec EJB pour qu'il soit injecté
+/**
+ * faire le lien avec le service, annotation avec EJB pour qu'il soit injecté
+ */
 	@EJB
 	private IAdminService adminService;
 	
-//	définition des attributs du managedbean de l'admin
+/**
+ * 	définition des attributs du managedbean de l'admin
+ */
 	private long id;
 	private String nom;
 	private String password;
 	private long idProduit;
+	private long idCategorie;
 	private List<Produit> listeProduits;
 	private List<Categorie> listeCategories;
-//	affichage par actualisation
+/**
+ * 	affichage par actualisation
+ */
 	private boolean rendu1=false;
 	private boolean rendu2=true;
 	
@@ -44,11 +57,12 @@ public class AdminManagedBean implements Serializable {
 	private Produit produit;
 	private Categorie categorie;
 	
-//	get et set
+/**
+ * 	get et set
+ * @return
+ */
 
 
-
-	
 	
 public IAdminService getAdminService() {
 		return adminService;
@@ -105,6 +119,16 @@ public IAdminService getAdminService() {
 	
 
 
+
+	public long getIdCategorie() {
+		return idCategorie;
+	}
+
+	public void setIdCategorie(long idCategorie) {
+		this.idCategorie = idCategorie;
+	}
+	
+	
 
 	public List<Produit> getListeProduits() {
 		return listeProduits;

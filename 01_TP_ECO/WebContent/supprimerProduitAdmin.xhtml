@@ -27,39 +27,6 @@
 
 	</h:form>
 
-
-<!-- revoir pour l'affichage -->
-	<p:dataTable var="liste" value="#{amb.listeProduits}"
-		rendered="#{amb.rendu1}">
-
-		<p:column headerText="Id :">
-			<h:outputText value="#{liste.idProduit}" />
-		</p:column>
-		<p:column headerText="Designation :">
-			<h:outputText value="#{liste.designation}" />
-		</p:column>
-		<p:column headerText="Description :">
-			<h:outputText value="#{liste.description}" />
-		</p:column>
-		<p:column headerText="Quantité(e)) :">
-			<h:outputText value="#{liste.quantite}" />
-		</p:column>
-		<p:column headerText="Prix total :">
-			<h:outputText value="#{liste.prix}" />
-		</p:column>
-	<!-- 	<p:column headerText="supprimer le produit ?">
-			<p:commandButton value="supprimer le produit par id"
-				icon="ui-icon-check" action="#{amb.suppressionProduit}"
-				update="@all" />
-		</p:column> -->
-
-	</p:dataTable>
-<h:form>
-		<p:commandButton value="afficher la liste des produits"
-			icon="ui-icon-check" action="#{amb.afficherProduit}"
-			update="@all" />
-	</h:form>
-
 <!-- fin de la zone d'edition -->
 			
 		</ui:define>

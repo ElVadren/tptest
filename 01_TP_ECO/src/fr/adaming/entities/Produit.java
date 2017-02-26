@@ -52,7 +52,6 @@ public class Produit implements Serializable {
 	@JoinColumn(name="categorie_id_fk", referencedColumnName="id_categorie")
 	private Categorie categorie;
 	
-	private long idCategorie;
 	
 	
 //---------- dÃ©claration des constructeurs :
@@ -70,14 +69,22 @@ public class Produit implements Serializable {
 		this.prix = prix;
 	}
 
-	//constructeur avec designation, description, prix, quantité (pour ajout dans la base de données)
-	public Produit(String designation, String description, double prix, int quantite, long idCategorie) {
+	
+	
+	/**
+	 * constructeur pour la méthode d'ajout de produit
+	 * l'attribut catégorie est assignée via la méthode attribuer()
+	 * @param designation
+	 * @param description
+	 * @param prix
+	 * @param quantite
+	 */
+	public Produit(String designation, String description, double prix, int quantite) {
 		super();
 		this.designation = designation;
 		this.description = description;
 		this.prix = prix;
 		this.quantite = quantite;
-		this.idCategorie=categorie.getIdCategorie();
 	}
 
 	
@@ -94,8 +101,9 @@ public class Produit implements Serializable {
 		
 	}
 	
-	
-	
+
+
+
 
 public Produit(long idProduit, String designation, String description, double prix) {
 		super();
@@ -166,13 +174,7 @@ public Produit(long idProduit, String designation, String description, double pr
 	}
 	
 	
-	public long getIdCategorie() {
-		return idCategorie;
-	}
 
-	public void setIdCategorie(long idCategorie) {
-		this.idCategorie = idCategorie;
-	}
 
 
 

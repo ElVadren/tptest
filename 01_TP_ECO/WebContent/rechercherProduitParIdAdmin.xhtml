@@ -21,15 +21,15 @@
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
 
 	<h:form>
-		<p:inputText value="#{amb.produit.idProduit}" />
+		<p:inputText value="#{navigationManagedBean.produit.idProduit}" />
 		<p:commandButton value="afficher le produit par id"
-			icon="ui-icon-check" action="#{amb.getProduitById}"
+			icon="ui-icon-check" action="#{navigationManagedBean.getProduitById}"
 			update="@all" />
 	</h:form>
 	<br />
 	<p:separator />
 
-	<p:dataTable var="produit" value="#{amb.produit}"
+	<p:dataTable var="produit" value="#{navigationManagedBean.produit}"
 		id="idtableauresult">
 
 		<p:column headerText="Id :">

@@ -68,7 +68,7 @@ public class AdminDaoImpl implements IAdminDao {
 		 */
 
 
-		em.persist(a);
+		em.merge(a);
 
 		System.out.println(a.getDescription());
 
