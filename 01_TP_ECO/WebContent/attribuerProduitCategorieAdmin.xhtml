@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+<head>
+<title>Formulaire d'ajout de produit par l'administrateur dans la base de données
+</title>
+</head>
+
+<body>
+
+
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates2/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
+<h:form>
+
+<h:outputText value="Id du produit"></h:outputText>
+<h:inputText id="id_produit" value="#{amb.produit.idProduit}"></h:inputText>
+
+<h:outputText value="catégorie"></h:outputText>
+<h:inputText id="categorie" value="#{amb.categorie.idCategorie}"></h:inputText>
+
+
+<h:commandButton action="#{amb.attribuer}" value="valider"></h:commandButton>
+
+</h:form>
+
+<!-- fin de la zone d'edition -->
+			
+		</ui:define>
+		
+	</ui:composition>	
+
+</body>
+
+</html>

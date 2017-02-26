@@ -26,7 +26,9 @@ public class Produit implements Serializable {
 
 
 	
-//-------------dÃ©claration des attributs :
+/**
+ * déclaration des attributs de la classe Produit
+ */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)

@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
@@ -19,6 +18,9 @@
 		<!--  redéfinition du corps -->
 		<ui:define name="corps">
 <!-- ECRIRE ICI LE CORPS DE LA PAGE -->
+
+<!--  -->
+
 	<h:form>
 		<p:commandButton value="afficher la liste des produits"
 			icon="ui-icon-check" action="#{amb.afficherProduit}"
@@ -46,7 +48,7 @@
 			<h:outputText value="#{produit.quantite}" />
 		</p:column>
 	<p:column headerText="Catégorie :">
-			<h:outputText value="#{produit.categorie}" />
+			<h:outputText value="#{produit.categorie.idCategorie}" />
 		</p:column>
 
 	</p:dataTable>
