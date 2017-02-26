@@ -47,9 +47,14 @@ public class AdminDaoImpl implements IAdminDao {
 		reqQuery.setParameter("pNom", ad.getNomAdmin());
 		reqQuery.setParameter("pPassword", ad.getPasswordAdmin());
 
-		System.out.println(ad.getNomAdmin());
 
-		return ad;
+		Admin admin = (Admin) reqQuery.getSingleResult();
+		
+		if (admin!=null) {
+			return admin;
+		} else {
+			return null;
+		}
 
 	}
 

@@ -290,12 +290,17 @@ public boolean isRendu1() {
 						this.rendu2=false;
 	}
 			
+			/**
+			 * méthode de suppression de catégorie
+			 * ne supprimer que la catégorie : permet de conserver les produits qui y étaient
+			 * associés dans le cas où l'on souhaite leur attribuer une nouvelle catégorie
+			 */
 			
 			public void supprimerCategorie() {
 				
 				System.out.println("test ajoutCatégorie");
 				
-				Categorie categorieRetour = adminService.ajoutCategorieService(this.categorie);
+				Categorie categorieRetour = adminService.suppressionCategorieService(categorie.getIdCategorie());
 						this.rendu1=true;
 						this.rendu2=false;
 	}

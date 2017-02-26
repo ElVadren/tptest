@@ -7,8 +7,7 @@ package fr.adaming.entities;
 
 import java.io.Serializable;
 
-
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,23 +44,37 @@ public class Produit implements Serializable {
 	@Column(name="selectionne_produit")
 	private boolean selectionne=false;
 
-//--------------declaration des liaisons :
+/**
+ * -------------declaration des liaisons :
+ */
 
-	//liaison produits et catégories :
+	/**
+	 * liaison produits et catégories :
+	 */
+	
 	@ManyToOne
 	@JoinColumn(name="categorie_id_fk", referencedColumnName="id_categorie")
 	private Categorie categorie;
 	
 	
 	
-//---------- dÃ©claration des constructeurs :
+/**
+ * ---------- déclaration des constructeurs :
+ */
 	
-		//un vide	
+	/**
+	 * un vide	
+	 */
 	public Produit() {
 		super();
 	}
 
-	//constructeur avec designation, description, prix (pour crÃ©ation)
+/**
+ * constructeur avec designation, description, prix (pour crÃ©ation)
+ * @param designation
+ * @param description
+ * @param prix
+ */
 	public Produit(String designation, String description, double prix) {
 		super();
 		this.designation = designation;
@@ -88,7 +101,15 @@ public class Produit implements Serializable {
 	}
 
 	
-	//constructeur complet
+	/**
+	 * constructeur complet
+	 * @param idProduit
+	 * @param designation
+	 * @param description
+	 * @param prix
+	 * @param quantite
+	 * @param selectionne
+	 */
 	public Produit(long idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne) {
 		super();
@@ -113,7 +134,10 @@ public Produit(long idProduit, String designation, String description, double pr
 		this.prix = prix;
 	}
 
-//-------------getters et setters :
+/**
+ * -------------getters et setters :
+ * @return
+ */
 	
 	public long getIdProduit() {
 		return idProduit;

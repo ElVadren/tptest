@@ -29,7 +29,7 @@ public class AdminServiceImpl implements IAdminService {
  */
 	@Override
 	public Admin isExistAdminService(Admin ad) {
-	return adminDao .isExistAdminDao(ad);
+	return adminDao.isExistAdminDao(ad);
 	}
 	
 @Override
