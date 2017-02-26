@@ -1,4 +1,7 @@
 package fr.adaming.managedBean;
+/**
+ * Le managedBean qui gère l'appel des méthodes pour l'admin
+ */
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,11 +17,7 @@ import fr.adaming.entities.Produit;
 import fr.adaming.service.IAdminService;
 
 
-/**
- * Définition jsf du managedBean
- * @author inti0277
- *
- */
+
 @ManagedBean(name="amb")
 @ViewScoped
 public class AdminManagedBean implements Serializable {

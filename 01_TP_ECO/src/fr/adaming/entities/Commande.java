@@ -24,7 +24,9 @@ import javax.persistence.Table;
 @Table(name="commandes")
 public class Commande implements Serializable {
 
-//----------------les attributs :
+/**
+ * ----------------les attributs :
+ */
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,40 +35,60 @@ public class Commande implements Serializable {
 	@Column(name="date_commande")
 	private Date dateCommande;
 
-//déclaration des liaisons :
+/**
+ * déclaration des liaisons :
+ */
 	
 
-	//liaison entre commandes et clients :
+	/**
+	 * liaison entre commandes et clients :
+	 */
 	@ManyToOne
 	@JoinColumn(name="client_id_fk", referencedColumnName="id_client")
 	private Client client;
 	
-	//liaison entre commande et panier
+	/**
+	 * liaison entre commande et panier
+	 */
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="panier_id_fk", referencedColumnName="id_panier")
 	private Panier panier;
 	
-//--------------Constructeurs :
+/**
+ * --------------Constructeurs :
+ */
 	
-	//un vide
+	/**
+	 * un vide
+	 */
 	public Commande() {
 		super();
 	}
 
-	//un avec la date
+	/**
+	 * un avec la date
+	 * @param dateCommande
+	 */
 	public Commande(Date dateCommande) {
 		super();
 		this.dateCommande = dateCommande;
 	}
 
-	//un complet
+	/**
+	 * un complet
+	 * @param idCommande
+	 * @param dateCommande
+	 */
 	public Commande(long idCommande, Date dateCommande) {
 		super();
 		this.idCommande = idCommande;
 		this.dateCommande = dateCommande;
 	}
 
-//getter et setters -----------------:
+/**
+ * getter et setters -----------------:
+ * @return
+ */
 	public long getIdCommande() {
 		return idCommande;
 	}
@@ -97,7 +119,10 @@ public class Commande implements Serializable {
 		this.panier = panier;
 	}
 
-	//clients
+	/**
+	 * clients
+	 * @return
+	 */
 	public Client getClient() {
 		return client;
 	}
@@ -106,8 +131,12 @@ public class Commande implements Serializable {
 		this.client = client;
 	}
 
-	//-------------------------les méthodes :	
-	//réecriture toString
+	/**
+	 * -------------------------les méthodes :	
+	 */
+	/**
+	 * réecriture toString
+	 */
 	@Override
 	public String toString() {
 		return "Commande [idCommande=" + idCommande + ", dateCommande=" + dateCommande + "]";

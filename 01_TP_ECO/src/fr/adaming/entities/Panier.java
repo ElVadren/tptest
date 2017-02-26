@@ -13,12 +13,19 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+/**
+ * classe produit
+ * 
+ *
+ */
 
 @Entity
 @Table(name="paniers")
 public class Panier implements Serializable{
 
-//déclaration des attributs	
+/**
+ * déclaration des attributs	
+ */
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -28,14 +35,18 @@ public class Panier implements Serializable{
 	@Column(name="id_panier")
 	private int id;
 
-	
+	/**
+	 * association avec la classe Panier 
+	 */
 	@OneToMany(mappedBy="panier", cascade=CascadeType.ALL)
 	private List<LigneCommande> listProduit;
 	
 	@OneToOne(mappedBy="panier")
 	private Commande commande;
 	
-	
+	/**
+	 * constructeurs vides
+	 */
 	
 	public Panier() {
 		super();
@@ -43,7 +54,10 @@ public class Panier implements Serializable{
 
 	
 
-
+/**
+ * get et set
+ * @return
+ */
 
 	public int getId() {
 		return id;

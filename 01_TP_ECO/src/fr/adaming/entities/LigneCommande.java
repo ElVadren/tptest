@@ -30,7 +30,9 @@ public class LigneCommande implements Serializable {
 	 */
 
 	
-	//-------------dÃ©claration des attributs :
+	/**
+	 * -------------déclaration des attributs :
+	 */
 		private static final long serialVersionUID = 1L;
 		@Id
 		@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -46,13 +48,17 @@ public class LigneCommande implements Serializable {
 		private int quantite;
 	
 
-	//--------------declaration des liaisons :	
+	/**
+	 * --------------declaration des liaisons :	
+	 */
 		@ManyToOne
 		@JoinColumn(name="panier_id_fk", referencedColumnName="id_panier")
 		private Panier panier;
 		
 		
-	//---------- dÃ©claration des constructeurs :
+	/**
+	 * ---------- déclaration des constructeurs :
+	 */
 	
 		public LigneCommande() {
 			super();
@@ -70,7 +76,10 @@ public class LigneCommande implements Serializable {
 
 
 
-	//-------------getters et setters :
+	/**
+	 * -------------getters et setters :
+	 * @return
+	 */
 		
 	
 		
@@ -116,9 +125,13 @@ public class LigneCommande implements Serializable {
 		}
 
 		
-	//------------les mÃ©thodes :
+	/**
+	 * ------------les méthodes :
+	 */
 		
-		//mÃ©thode toString qui affiche Id, designation, description, prix
+		/**
+		 * méthode toString qui affiche Id, designation, description, prix
+		 */
 		
 
 		@Override

@@ -17,12 +17,15 @@ import fr.adaming.entities.Client;
 import fr.adaming.entities.Produit;
 import fr.adaming.service.IClientService;
 
+
 @ManagedBean
 @SessionScoped
 public class ClientManagedBean implements Serializable {
 
 
-//déclaration des attributs du ManagedBean : ------------------
+/**
+ * déclaration des attributs du ManagedBean : ------------------
+ */
 	private static final long serialVersionUID = 1L;
 	private Client client;
 	private List<Produit> listePanier;

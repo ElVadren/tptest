@@ -13,29 +13,43 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Classe catégorie
+ * @author inti0277
+ *
+ */
 @Entity
 @Table(name="categories")
 public class Categorie implements Serializable {
 
 	
+	/**
+	 * 	attributs
+	 */
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name="id_categorie")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-//	attributs
+
 	private long idCategorie;
 	@Column(name="nom_categorie")
 	private String nomCategorie;
 	@Column(name="description_categorie")
 	private String description;
 	
-//	clé étrangère de la classe produit : association d'une liste de produit à une catégorie
+/**
+ * 	clé étrangère de la classe Produit : association d'une liste de produit à une catégorie
+ */
 	@OneToMany(mappedBy="categorie")
 	private List<Produit> listProduit;
 	
 
 	
-//	get et set
+/**
+ * 	get et set
+ * @return
+ */
 	public long getIdCategorie() {
 		return idCategorie;
 	}
@@ -56,7 +70,11 @@ public class Categorie implements Serializable {
 	}
 	
 	
-//	constructeurs
+/**
+ * 	constructeurs
+ * @param nomCategorie
+ * @param description
+ */
 	public Categorie(String nomCategorie, String description) {
 		super();
 		this.nomCategorie = nomCategorie;

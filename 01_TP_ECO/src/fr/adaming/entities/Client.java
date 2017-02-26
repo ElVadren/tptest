@@ -18,12 +18,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+/**
+ * Classe client
+ * @author inti0277
+ *
+ */
 @Entity
 @Table(name="clients")
 public class Client implements Serializable{
 
 	
-//déclaration des attributs -----------------:
+/**
+ * déclaration des attributs -----------------:
+ */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -39,18 +46,30 @@ public class Client implements Serializable{
 	@Column(name="tel_client")
 	private String tel;
 	
-//	clé étrangère de la classe Commande : associe une liste de commande à un client
+/**
+ * 	clé étrangère de la classe Commande : associe une liste de commande à un client
+ */
 	@OneToMany(mappedBy="client")	
 	private List<Commande> listCommande;
 	
-//déclaration des constructeurs ---------------:
-	
-	//un vide
+/**
+ * déclaration des constructeurs ---------------:
+ */
+
+/**
+ * un vide
+ */
 	public Client() {
 		super();
 	}
 
-	//un sans id
+	/**
+	 * un sans id
+	 * @param nomClient
+	 * @param adresse
+	 * @param email
+	 * @param tel
+	 */
 	public Client(String nomClient, String adresse, String email, String tel) {
 		super();
 		this.nomClient = nomClient;
@@ -59,7 +78,14 @@ public class Client implements Serializable{
 		this.tel = tel;
 	}
 
-	//un complet
+	/**
+	 * un complet
+	 * @param idClient
+	 * @param nomClient
+	 * @param adresse
+	 * @param email
+	 * @param tel
+	 */
 	public Client(long idClient, String nomClient, String adresse, String email, String tel) {
 		super();
 		this.idClient = idClient;
@@ -70,7 +96,10 @@ public class Client implements Serializable{
 	}
 
 	
-//getters et setters ----------------------------:
+/**
+ * getters et setters ----------------------------:
+ * @return
+ */
 	
 	public long getIdClient() {
 		return idClient;
@@ -121,11 +150,15 @@ public class Client implements Serializable{
 	}
 	
 
-//les méthodes --------------------------:
+/**
+ * les méthodes --------------------------:
+ */
 	
 
 
-	//toString 
+	/**
+	 * toString 
+	 */
 	@Override
 	public String toString() {
 		return "Client [idClient=" + idClient + ", nomClient=" + nomClient + ", adresse=" + adresse + ", email=" + email

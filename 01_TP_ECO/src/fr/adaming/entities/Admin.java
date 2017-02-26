@@ -7,13 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-//classe admin
+/**
+ * classe admin
+ * @author inti0277
+ *
+ */
 
 @Entity
 @Table(name="admins")
 public class Admin {
 	
-//	attributs
+/**
+ * 	attributs
+ */
 	@Id
 	@Column(name="id_admin")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -24,7 +30,10 @@ public class Admin {
 	@Column(name="password_admin")
 	private String passwordAdmin;
 	
-//	get et set
+/**
+ * 	get et set
+ * @return
+ */
 	public long getIdAdmin() {
 		return idAdmin;
 	}
@@ -44,7 +53,12 @@ public class Admin {
 		this.passwordAdmin = passwordAdmin;
 	}
 	
-//	constructeurs
+/**
+ * 	constructeurs
+ * @param idAdmin
+ * @param nomAdmin
+ * @param passwordAdmin
+ */
 	public Admin(long idAdmin, String nomAdmin, String passwordAdmin) {
 		super();
 		this.idAdmin = idAdmin;

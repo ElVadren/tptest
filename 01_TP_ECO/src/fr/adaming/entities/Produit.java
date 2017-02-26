@@ -18,7 +18,11 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
-
+/**
+ * 
+ * classe Produit
+ *
+ */
 @Entity
 @Table(name="produits")
 public class Produit implements Serializable {
