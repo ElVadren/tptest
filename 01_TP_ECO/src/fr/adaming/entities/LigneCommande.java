@@ -47,7 +47,6 @@ public class LigneCommande implements Serializable {
 		@Column(name="quantite_produit")
 		private int quantite;
 	
-
 	/**
 	 * --------------declaration des liaisons :	
 	 */
@@ -124,11 +123,21 @@ public class LigneCommande implements Serializable {
 			this.quantite = quantite;
 		}
 
-		
+		public Panier getPanier() {
+			return panier;
+		}
+
+
+		public void setPanier(Panier panier) {
+			this.panier = panier;
+		}
 	/**
 	 * ------------les méthodes :
 	 */
 		
+		
+
+
 		/**
 		 * méthode toString qui affiche Id, designation, description, prix
 		 */

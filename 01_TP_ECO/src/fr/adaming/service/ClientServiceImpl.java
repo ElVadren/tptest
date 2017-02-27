@@ -9,6 +9,7 @@ import fr.adaming.dao.IClientDao;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Commande;
+import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
 
 @Stateless
@@ -85,6 +86,11 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public List<Commande> getCommandeByClientService(Client client) {
 		return clientDao.getCommandeByClient(client);
+	}
+
+	@Override
+	public List<LigneCommande> getPanierByCommandeService(Commande commande) {
+		return clientDao.getPanierByCommande(commande);
 	}
 
 

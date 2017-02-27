@@ -133,7 +133,8 @@ public class ClientDaoImpl implements IClientDao {
 	/**
 	 * La méthode débute par la création d'une nouvelle commande :
 	 * On lui attribut le client ainsi que la date
-	 * Il faut ensuite enregistrer la liste dans la base de donnée 
+	 * Il faut ensuite enregistrer la commande dans la base de donnée.
+	 * Par persistence, toutes les informations (panier/ligne de commande) sont enregistrée et liée en même temps
 	 */
 	@Override
 	public void enregistrementCommande(Client client, List<Produit> listeProduit) {
@@ -147,6 +148,7 @@ public class ClientDaoImpl implements IClientDao {
 			produitc.setDescription(p.getDescription());
 			produitc.setQuantite(p.getQuantite());
 			produitc.setPrix(p.getPrix());
+			produitc.setPanier(panier);
 			listeC.add(produitc);
 		}
 		panier.setListProduit(listeC);
@@ -238,6 +240,28 @@ public class ClientDaoImpl implements IClientDao {
 		return listeCommande;
 		}else{
 		return null;
+		}
+	}
+
+	/**
+	 * Cette méthode permet à un client connecté de consulter les anciens panier qu'il a commandé 
+	 */
+	public List<LigneCommande> getPanierByCommande(Commande commande) {
+		/**
+		 * Ecriture de la requête : tous les produits commandés correspondant au panier 
+		 * de la commande sont extraits de la base.
+		 * Comme à chaque panier correspond une commande dans la bdd et que une commande et un panier sont créer 
+		 * en même temps, l'ID du panier = ID de la commande.
+		 * 
+		 */
+		String req = "select l from LigneCommande l where l.panier.id=:idPanier";
+		Query query = em.createQuery(req);
+		query.setParameter("idPanier", commande.getIdCommande());
+		List<LigneCommande> listeProduitCo = query.getResultList();
+		if (listeProduitCo.size()>0){
+		return listeProduitCo;
+		}else{
+			return null;
 		}
 	}
 

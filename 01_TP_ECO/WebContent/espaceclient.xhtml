@@ -34,10 +34,10 @@
 					<p:column style="width:150px">
 						<h:form>
 							<p:commandButton value="Voir le détail"
-								action="#" update="@all">
-								<!--  avec un listener, récupérer le produit -->
+								action="#{clientManagedBean.detailPanier}">
+								<!--  avec un listener, récupérer la commande -->
 								<f:setPropertyActionListener value="#{liste}"
-									target="#{clientManagedBean.produit}"></f:setPropertyActionListener>
+									target="#{clientManagedBean.commande}"></f:setPropertyActionListener>
 							</p:commandButton>
 						</h:form>
 					</p:column>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	
+</h:head>
+
+
+<h:body>
+<!--  Chargement du template de la page -->
+	<ui:composition template="/templates/layout.xhtml">
+		<!--  redéfinition du corps -->
+		<ui:define name="corps">
+<br/>
+<div align="left">
+<H4>Voici le détail de cette commande :</H4>
+</div>
+	<p:separator />
+<div style="margin-left: 150px; margin-right: 150px">
+				<p:dataTable id="listeP" var="liste"
+					value="#{clientManagedBean.listeProd}">
+					<p:column headerText="Designation :">
+						<div style="font-weight: bold;">
+							<h:outputText value="#{liste.designation}" />
+						</div>
+						<br />
+						<div style="font-style: italic">
+							<h:outputText value="#{liste.description}" />
+						</div>
+					</p:column>
+
+					<p:column style="width:175px" headerText="Quantité :">
+
+						<h:outputText value="#{liste.quantite}" />
+					</p:column>
+
+					<p:column style="width:175px" headerText="Prix (€):">
+
+						<h:outputText value="#{liste.prix}" />
+					</p:column>
+
+				</p:dataTable>
+
+			</div>
+	<p:separator />	
+
+	
+			
+		</ui:define>
+		
+	</ui:composition>	
+
+
+	
+</h:body>
+</html>

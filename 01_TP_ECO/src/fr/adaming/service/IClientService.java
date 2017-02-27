@@ -7,6 +7,7 @@ import javax.ejb.Local;
 import fr.adaming.entities.Categorie;
 import fr.adaming.entities.Client;
 import fr.adaming.entities.Commande;
+import fr.adaming.entities.LigneCommande;
 import fr.adaming.entities.Produit;
 
 @Local
@@ -22,4 +23,5 @@ public interface IClientService {
 	public List<Produit> getAllProduitsService();
 	public Client isExistService(Client client);
 	public List<Commande> getCommandeByClientService (Client client);
+	public List<LigneCommande> getPanierByCommandeService (Commande commande);
 }

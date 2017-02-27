@@ -33,7 +33,7 @@ public class Panier implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Id
 	@Column(name="id_panier")
-	private int id;
+	private long id;
 
 	/**
 	 * association avec la classe Panier 
@@ -59,12 +59,12 @@ public class Panier implements Serializable{
  * @return
  */
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
